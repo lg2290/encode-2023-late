@@ -12,12 +12,13 @@ function handleGlobalError(error: any) {
 
 async function main() {
     const inputData: string[] = extractInputData(process.argv, 1);
+    const myTokenContractAddress = inputData[0];
 
     const deployer = await getDeployerSigner();
     const account1 = await getAccount1Signer();
 
-    delegateVote(deployer, inputData[0], account1.address);
-    delegateVote(account1, inputData[0], deployer.address);
+    delegateVote(deployer, myTokenContractAddress, account1.address);
+    delegateVote(account1, myTokenContractAddress, deployer.address);
 }
 
 async function delegateVote(signer: ethers.Wallet, myTokenContractAddress: string, addressToDelegateTo: string) {

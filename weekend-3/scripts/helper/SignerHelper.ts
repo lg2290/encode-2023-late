@@ -4,7 +4,8 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 class Constants {
-    static readonly PROVIDER_GOERLI = "goerli";
+    static readonly GOERLI_NETWORK = "goerli";
+    static readonly SEPOLIA_NETWORK = "sepolia";
 }
 
 export async function getDeployerSigner(): Promise<ethers.Wallet> {
@@ -42,7 +43,7 @@ function isEmpty(str: string | undefined) {
 }
 
 async function getSignerFromPrivateKey(privateKey: string): Promise<ethers.Wallet> {
-    const provider = ethers.getDefaultProvider(Constants.PROVIDER_GOERLI);
+    const provider = getProvider();
 
     const wallet = new ethers.Wallet(privateKey);
     const signer = wallet.connect(provider);
@@ -54,7 +55,7 @@ async function getSignerFromPrivateKey(privateKey: string): Promise<ethers.Walle
 }
 
 async function getSignerFromMnemonic(mnemonic: string): Promise<ethers.Wallet> {
-    const provider = ethers.getDefaultProvider(Constants.PROVIDER_GOERLI);
+    const provider = getProvider();
 
     const wallet = ethers.Wallet.fromMnemonic(mnemonic);
     const signer = wallet.connect(provider);
@@ -66,7 +67,7 @@ async function getSignerFromMnemonic(mnemonic: string): Promise<ethers.Wallet> {
 }
 
 async function getSignerFromRandomWallet(): Promise<ethers.Wallet> {
-    const provider = ethers.getDefaultProvider(Constants.PROVIDER_GOERLI);
+    const provider = getProvider();
 
     const wallet = ethers.Wallet.createRandom();
     const signer = wallet.connect(provider);
@@ -75,4 +76,20 @@ async function getSignerFromRandomWallet(): Promise<ethers.Wallet> {
     console.log(`Signer address ${signer.address}, balance ${balance}`)
 
     return signer;
+}
+
+function getProvider(): ethers.providers.BaseProvider {
+    //return getDefault(Constants.GOERLI_NETWORK);
+
+    return getInfura(Constants.SEPOLIA_NETWORK);
+}
+
+function getDefault(network: string) {
+    console.log(`Using default provider on ${network} network`);
+    return ethers.getDefaultProvider(Constants.GOERLI_NETWORK);
+}
+
+function getInfura(network: string) {
+    console.log(`Using Infura provider on ${network} network`);
+    return new ethers.providers.InfuraProvider(network, process.env.INFURA_API_KEY);
 }
