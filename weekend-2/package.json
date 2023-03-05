@@ -1,5 +1,5 @@
 {
-  "name": "weekend-2",
+  "name": "weekend-3",
   "packageManager": "yarn@3.4.1",
   "devDependencies": {
     "@ethersproject/abi": "^5.4.7",
