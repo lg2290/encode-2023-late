@@ -1,7 +1,7 @@
-import { getDeployerSigner, getAccount1Signer } from './helper/SignerHelper'
-import { attachToTokenizedBalot } from './helper/ContractHelper'
-import { extractInputData } from './helper/InputDataHelper';
-import { TokenizedBallot } from '../typechain-types';
+import { getDeployerSigner, getAccount1Signer } from '../helper/SignerHelper'
+import { attachToTokenizedBalot } from '../helper/ContractHelper'
+import { extractInputData } from '../helper/InputDataHelper';
+import { TokenizedBallot } from '../../typechain-types';
 
 main().catch(handleGlobalError);
 

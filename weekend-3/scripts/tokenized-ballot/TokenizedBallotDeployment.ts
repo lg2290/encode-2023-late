@@ -1,9 +1,9 @@
 import { ethers } from "ethers";
 import * as dotenv from 'dotenv';
-import { getDeployerSigner } from './helper/SignerHelper';
-import { TokenizedBallot__factory } from "../typechain-types";
-import { convertStringArrayToBytes32Array } from './helper/StringHelper';
-import { extractInputData } from './helper/InputDataHelper';
+import { getDeployerSigner } from '../helper/SignerHelper';
+import { TokenizedBallot__factory } from "../../typechain-types";
+import { convertStringArrayToBytes32Array } from '../helper/StringHelper';
+import { extractInputData } from '../helper/InputDataHelper';
 
 dotenv.config();
 

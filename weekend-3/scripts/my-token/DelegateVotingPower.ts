@@ -1,6 +1,6 @@
-import { getDeployerSigner, getAccount1Signer } from './helper/SignerHelper'
-import { attachToMyToken } from './helper/ContractHelper'
-import { extractInputData } from './helper/InputDataHelper';
+import { getDeployerSigner, getAccount1Signer } from '../helper/SignerHelper'
+import { attachToMyToken } from '../helper/ContractHelper'
+import { extractInputData } from '../helper/InputDataHelper';
 import { ethers } from 'ethers';
 
 main().catch(handleGlobalError);
