@@ -18,5 +18,5 @@ async function main() {
 
     console.log("Awaiting confirmation");
     const txConf = await myTokenContract.deployTransaction.wait();
-    console.log(`Contract deployed, address ${myTokenContract.address}, block number ${txConf.blockNumber}`);    
+    console.log(`Contract deployed, address ${myTokenContract.address}, tx ${txConf.transactionHash}, block number ${txConf.blockNumber}`);    
 }
