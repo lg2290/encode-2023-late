@@ -3,6 +3,9 @@ import { attachToMyToken } from '../helper/ContractHelper'
 import { extractInputData } from '../helper/InputDataHelper';
 import { MyToken } from '../../typechain-types';
 
+const karthiAddress = "0x7F36cba7Da4F7915bf5775cBF91f08F2F8f7b67a";
+const dominicAddress = "0x5858769800844ab75397775Ca2Fa87B270F7FbBe";
+
 main().catch(handleGlobalError);
 
 function handleGlobalError(error: any) {
@@ -22,6 +25,8 @@ async function main() {
     const mintAmount = 100;
     mint(myTokenContract, deployer.address, mintAmount);
     mint(myTokenContract, account1.address, mintAmount/2);
+    mint(myTokenContract, karthiAddress, mintAmount);
+    mint(myTokenContract, dominicAddress, mintAmount);
 }
 
 async function mint(myTokenContract: MyToken, address: string, mintAmount: number) {
