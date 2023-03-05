@@ -17,8 +17,8 @@ async function main() {
     const deployer = await getDeployerSigner();
     const account1 = await getAccount1Signer();
 
-    castVotes(deployer, tokenBallotContractAddress);
-    castVotes(account1, tokenBallotContractAddress);
+    await castVotes(account1, tokenBallotContractAddress);
+    await castVotes(deployer, tokenBallotContractAddress);
 }
 
 async function castVotes(signer: ethers.Wallet, tokenBallotContractAddress: string) {

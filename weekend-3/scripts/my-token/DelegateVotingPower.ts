@@ -17,8 +17,8 @@ async function main() {
     const deployer = await getDeployerSigner();
     const account1 = await getAccount1Signer();
 
-    delegateVote(deployer, myTokenContractAddress, account1.address);
-    delegateVote(account1, myTokenContractAddress, deployer.address);
+    await delegateVote(deployer, myTokenContractAddress, account1.address);
+    await delegateVote(account1, myTokenContractAddress, deployer.address);
 }
 
 async function delegateVote(signer: ethers.Wallet, myTokenContractAddress: string, addressToDelegateTo: string) {

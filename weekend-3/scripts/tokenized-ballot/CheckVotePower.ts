@@ -23,8 +23,8 @@ async function main() {
     getVotePower(tokenizedBallotContract, account1.address);
 }
 
-function getVotePower(tokenizedBallotContract: TokenizedBallot, address: string) {
+async function getVotePower(tokenizedBallotContract: TokenizedBallot, address: string) {
     console.log(`Getting voting power to address ${address}`);
-    const accountVotePower = tokenizedBallotContract.votePower(address);
+    const accountVotePower = await tokenizedBallotContract.votePower(address);
     console.log(`Account ${address} vote power is ${accountVotePower}`);
 }

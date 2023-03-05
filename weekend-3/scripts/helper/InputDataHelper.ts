@@ -7,7 +7,7 @@ export function extractInputData(argv: string[], minInputDataSize: number): stri
 }
 
 function validateInputDataSize(dataValues: string[], minInputDataSize: number) {
-    if(dataValues.length < 2) {
+    if(dataValues.length < minInputDataSize) {
         throw new Error("Missing input data");
     }
 }

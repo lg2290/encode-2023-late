@@ -23,10 +23,10 @@ async function main() {
     const myTokenContract = attachToMyToken(deployer, myTokenContractAddress);
 
     const mintAmount = 100;
-    mint(myTokenContract, deployer.address, mintAmount);
-    mint(myTokenContract, account1.address, mintAmount/2);
-    mint(myTokenContract, karthiAddress, mintAmount);
-    mint(myTokenContract, dominicAddress, mintAmount);
+    //await mint(myTokenContract, deployer.address, mintAmount);
+    //await mint(myTokenContract, account1.address, mintAmount);
+    //await mint(myTokenContract, karthiAddress, mintAmount);
+    await mint(myTokenContract, dominicAddress, mintAmount);
 }
 
 async function mint(myTokenContract: MyToken, address: string, mintAmount: number) {
