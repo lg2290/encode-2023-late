@@ -952,4 +952,125 @@ Proposal ONE, index 0, winning with 17 votes
 
 </details>
 
-# aaa
+<details>
+    <summary>CastVotes</summary>
+
+```bash
+➜  weekend-3 git:(main) yarn run ts-node --files scripts/tokenized-ballot/CastVotes.ts 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+Using Infura provider on sepolia network
+Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 503185690413879161
+Using Infura provider on sepolia network
+Signer address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D, balance 2270946718496519929
+Attaching ballot to address 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+Voting
+Address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D voted 16 for proposal 1, tx 0x852f5d8d44fe9cbc412e17466cd5d6de8a2b8144e2cfe6a5205da3f4cbd8a37b, block number 3031284
+Attaching ballot to address 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+Voting
+Address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa voted 1 for proposal 1, tx 0x0cb504425cefbf787edf8a28533e91aa6f41b447824dcd7b47b373415985768c, block number 3031285
+```
+
+</details>
+
+<details>
+    <summary>CheckVotePower</summary>
+
+```bash
+➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+Using Infura provider on sepolia network
+Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 503111662413533697
+Using Infura provider on sepolia network
+Signer address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D, balance 2270847040496054765
+Attaching ballot to address 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+Getting voting power to address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa
+Account 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa vote power is 93
+Getting voting power to address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D
+Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 273
+```
+
+</details>
+
+<details>
+    <summary>QueryResults - Error, Proposals Tied</summary>
+
+```bash
+➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/QueryResults.ts 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+Using Infura provider on sepolia network
+Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 503111662413533697
+Attaching ballot to address 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+Error: call revert exception; VM Exception while processing transaction: reverted with reason string "There are proposals tied with most votes" [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (method="winningProposal()", data="0x08c379a0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000285468657265206172652070726f706f73616c7320746965642077697468206d6f737420766f746573000000000000000000000000000000000000000000000000", errorArgs=["There are proposals tied with most votes"], errorName="Error", errorSignature="Error(string)", reason="There are proposals tied with most votes", code=CALL_EXCEPTION, version=abi/5.7.0)
+    at Logger.makeError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
+    at Logger.throwError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
+    at Interface.decodeFunctionResult (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/abi/src.ts/interface.ts:427:23)
+    at Contract.<anonymous> (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/contracts/src.ts/index.ts:400:44)
+    at step (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/contracts/lib/index.js:48:23)
+    at Object.next (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/contracts/lib/index.js:29:53)
+    at fulfilled (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/contracts/lib/index.js:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  reason: 'There are proposals tied with most votes',
+  code: 'CALL_EXCEPTION',
+  method: 'winningProposal()',
+  data: '0x08c379a0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000285468657265206172652070726f706f73616c7320746965642077697468206d6f737420766f746573000000000000000000000000000000000000000000000000',
+  errorArgs: [ 'There are proposals tied with most votes' ],
+  errorName: 'Error',
+  errorSignature: 'Error(string)',
+  address: '0xc33e80202325d8264f427b248DD2704d48d0Fc3F',
+  args: [],
+  transaction: {
+    data: '0x609ff1bd',
+    to: '0xc33e80202325d8264f427b248DD2704d48d0Fc3F',
+    from: '0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa'
+  }
+}
+```
+
+</details>
+
+<details>
+    <summary>CastVotes</summary>
+
+```bash
+➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CastVotes.ts 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+Using Infura provider on sepolia network
+Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 503111662413533697
+Using Infura provider on sepolia network
+Signer address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D, balance 2270847040496054765
+Attaching ballot to address 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+Voting
+Address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D voted 24 for proposal 0, tx 0x2d82322aeda2f15d02ef219c355c21a02be6f030b175b004f1109b277cc3728b, block number 3031297
+Attaching ballot to address 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+Voting
+Address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa voted 3 for proposal 1, tx 0x90d63d0db98a7240321a63c638fe31b973bc7f3a39b592c2b6276de23dfd004d, block number 3031298
+```
+
+</details>
+
+<details>
+    <summary>CheckVotePower</summary>
+
+```bash
+➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+Using Infura provider on sepolia network
+Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 503037634413188233
+Using Infura provider on sepolia network
+Signer address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D, balance 2270773030495709385
+Attaching ballot to address 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+Getting voting power to address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa
+Account 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa vote power is 90
+Getting voting power to address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D
+Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 249
+```
+
+</details>
+
+<details>
+    <summary>QueryResults</summary>
+
+```bash
+➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/QueryResults.ts 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+Using Infura provider on sepolia network
+Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 503037634413188233
+Attaching ballot to address 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+Proposal ONE, index 0, winning with 41 votes
+```
+
+</details>
