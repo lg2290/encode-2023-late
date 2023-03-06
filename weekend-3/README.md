@@ -16,14 +16,16 @@ yarn run ts-node --files scripts/my-token/MyTokenDeployment.ts
 
 <details>
     <summary>Success</summary>
-    ```bash
-    ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/my-token/MyTokenDeployment.ts
-    Using Infura provider on sepolia network
-    Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 521640156000000000
-    Deploying MyToken contract
-    Awaiting confirmation
-    Contract deployed, address 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2, tx 0xdd9d556ce2251a8859c940a2820c68eeb62b103f207bfdc38c4b11c0877d0c0b, block number 3029422
-    ```
+    
+```bash
+➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/my-token/MyTokenDeployment.ts
+Using Infura provider on sepolia network
+Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 521640156000000000
+Deploying MyToken contract
+Awaiting confirmation
+Contract deployed, address 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2, tx 0xdd9d556ce2251a8859c940a2820c68eeb62b103f207bfdc38c4b11c0877d0c0b, block number 3029422
+```
+
 </details>
 
 ### GiveVotingTokens
