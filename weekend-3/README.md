@@ -1,5 +1,8 @@
 # Weekend 3 Project - Tokenized Ballot
 
+* Deployer: 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa
+* Account1: 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D
+
 ## MyToken
 
 * MyToken Contract
@@ -259,7 +262,9 @@ yarn run ts-node --files scripts/my-token/DelegateVotingPower.ts [myTokenContrac
 
 #### Logs
 
-* Error - Missing Args
+<details>
+    <summary>Error - Missing Args</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/my-token/DelegateVotingPower.ts
 
@@ -276,7 +281,11 @@ Error: Missing input data
     at Function.Module._load (node:internal/modules/cjs/loader:958:12)
 ```
 
-* Success
+</details>
+
+<details>
+    <summary>Success</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/my-token/DelegateVotingPower.ts
  0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2
@@ -294,6 +303,7 @@ Awaiting confirmation
 Delegated vote to 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa in transaction 0x4e9c27301b72785281b4e7d681243cb63ade105e6863e71c7ff280d3f1adbfc4, block 3029653
 ```
 
+</details>
 
 ## TokenizedBallot
 
@@ -305,7 +315,9 @@ Delegated vote to 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa in transaction 0x4e
 yarn run ts-node --files scripts/tokenized-ballot/TokenizedBallotDeployment.ts [myTokenContractAddress] [blockNumber] [proposal1] [proposal2] [proposal3] ...
 ```
 
-* Error - Missing Args
+<details>
+    <summary>Error - Missing Args</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/TokenizedBallotDeployment.ts
 Using Infura provider on sepolia network
@@ -317,13 +329,17 @@ Error: Missing input data
     at processTicksAndRejections (node:internal/process/task_queues:95:5)
 ```
 
+</details>
+
 #### CheckVotePower
 
 ```bash
 yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts [tokenizedBallotContractAddress]
 ```
 
-* Error - Missing Args
+<details>
+    <summary>Error - Missing Args</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts
 Error: Missing input data
@@ -339,13 +355,17 @@ Error: Missing input data
     at Function.Module._load (node:internal/modules/cjs/loader:958:12)
 ```
 
+</details>
+
 #### CastVotes
 
 ```bash
 yarn run ts-node --files scripts/tokenized-ballot/CastVotes.ts [tokenizedBallotContractAddress]
 ```
 
-* Error - Missing Args
+<details>
+    <summary>Error - Missing Args</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CastVotes.ts
 Error: Missing input data
@@ -360,6 +380,8 @@ Error: Missing input data
     at Module.load (node:internal/modules/cjs/loader:1117:32)
     at Function.Module._load (node:internal/modules/cjs/loader:958:12)
 ```
+
+</details>
 
 ### Executions
 
