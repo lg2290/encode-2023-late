@@ -19,7 +19,8 @@ yarn run ts-node --files scripts/my-token/MyTokenDeployment.ts
 
 <details>
     <summary>Success</summary>
-    
+
+[Tx 0xdd9d556ce2251a8859c940a2820c68eeb62b103f207bfdc38c4b11c0877d0c0b](https://sepolia.etherscan.io/tx/0xdd9d556ce2251a8859c940a2820c68eeb62b103f207bfdc38c4b11c0877d0c0b)
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/my-token/MyTokenDeployment.ts
 Using Infura provider on sepolia network
@@ -141,7 +142,8 @@ transactionHash: '0x50b9e03af37adc38e9119ccd154f251ba32f0ad0b4f8c9671d87054e5a3f
 
 <details>
     <summary>Error - partial error (can't execute multiple transactions?):</summary>
- 
+
+[Tx 0x3dd9ed0d4a9b2e270d15705494e424c103985248b36c219d168a0d27974205e8](https://sepolia.etherscan.io/tx/0x3dd9ed0d4a9b2e270d15705494e424c103985248b36c219d168a0d27974205e8)
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/my-token/GiveVotingTokens.ts 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2
 Using Infura provider on sepolia network
@@ -208,6 +210,7 @@ Error: transaction failed [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTI
 <details>
     <summary>Success</summary>
 
+[Tx 0x39a9bab33df0ab08464368f1a3448618b5f855ec2e3f168994084c7475396678](https://sepolia.etherscan.io/tx/0x39a9bab33df0ab08464368f1a3448618b5f855ec2e3f168994084c7475396678)
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/my-token/GiveVotingTokens.ts 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2
 Using Infura provider on sepolia network
@@ -219,6 +222,7 @@ Minting tokens
 Minted 100 tokens to address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa in tx 0x39a9bab33df0ab08464368f1a3448618b5f855ec2e3f168994084c7475396678, block 3029471
 ```
 
+[Tx 0x4a0348a43248901d69a2f2bc73ed4992d2e7228443c94855d48a40bbd47d56a8](https://sepolia.etherscan.io/tx/0x4a0348a43248901d69a2f2bc73ed4992d2e7228443c94855d48a40bbd47d56a8)
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/my-token/GiveVotingTokens.ts 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2
 Using Infura provider on sepolia network
@@ -230,6 +234,7 @@ Minting tokens
 Minted 100 tokens to address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D in tx 0x4a0348a43248901d69a2f2bc73ed4992d2e7228443c94855d48a40bbd47d56a8, block 3029481
 ```
 
+[Tx 0xadfa04a679a9767b1dfcac436b37dc34b5ed1fbf607d442fc5168035e510ae2a](https://sepolia.etherscan.io/tx/0xadfa04a679a9767b1dfcac436b37dc34b5ed1fbf607d442fc5168035e510ae2a)
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/my-token/GiveVotingTokens.ts 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2
 Using Infura provider on sepolia network
@@ -241,6 +246,7 @@ Minting tokens
 Minted 100 tokens to address 0x7F36cba7Da4F7915bf5775cBF91f08F2F8f7b67a in tx 0xadfa04a679a9767b1dfcac436b37dc34b5ed1fbf607d442fc5168035e510ae2a, block 3029485
 ```
 
+[Tx 0xc4090a3c4b9824961637a8a898996df5353010b87bf2be978526b40d17cecd3b](https://sepolia.etherscan.io/tx/0xc4090a3c4b9824961637a8a898996df5353010b87bf2be978526b40d17cecd3b)
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/my-token/GiveVotingTokens.ts 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2
 Using Infura provider on sepolia network
@@ -757,6 +763,7 @@ Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 300
 <details>
     <summary>CastVotes</summary>
 
+[Tx 0x71c986466608d8471b538cf835c6c8421676656c4725373ad111b1d068682a8a](https://sepolia.etherscan.io/tx/0x71c986466608d8471b538cf835c6c8421676656c4725373ad111b1d068682a8a)
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CastVotes.ts 0xb6aa3DA7043bc5b583dE37082E10a6952F45a5B8
 Using Infura provider on sepolia network
@@ -905,6 +912,8 @@ Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 300
 <details>
     <summary>CastVotes</summary>
 
+[Tx 0x31c769879f86e2f353f6a061c40055869a0fc8d9936b13f65f042ed1e983634b](https://sepolia.etherscan.io/tx/0x31c769879f86e2f353f6a061c40055869a0fc8d9936b13f65f042ed1e983634b)
+[Tx 0xd9dd53c7a188478cbdaecf1de20f7eda32c314d94c80ef1512dc183fc7ca9728](https://sepolia.etherscan.io/tx/0xd9dd53c7a188478cbdaecf1de20f7eda32c314d94c80ef1512dc183fc7ca9728)
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CastVotes.ts 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
 Using Infura provider on sepolia network
@@ -955,6 +964,8 @@ Proposal ONE, index 0, winning with 17 votes
 <details>
     <summary>CastVotes</summary>
 
+[Tx 0x852f5d8d44fe9cbc412e17466cd5d6de8a2b8144e2cfe6a5205da3f4cbd8a37b](https://sepolia.etherscan.io/tx/0x852f5d8d44fe9cbc412e17466cd5d6de8a2b8144e2cfe6a5205da3f4cbd8a37b)
+[Tx 0x0cb504425cefbf787edf8a28533e91aa6f41b447824dcd7b47b373415985768c](https://sepolia.etherscan.io/tx/0x0cb504425cefbf787edf8a28533e91aa6f41b447824dcd7b47b373415985768c)
 ```bash
 ➜  weekend-3 git:(main) yarn run ts-node --files scripts/tokenized-ballot/CastVotes.ts 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
 Using Infura provider on sepolia network
@@ -1028,6 +1039,8 @@ Error: call revert exception; VM Exception while processing transaction: reverte
 <details>
     <summary>CastVotes</summary>
 
+[Tx 0x2d82322aeda2f15d02ef219c355c21a02be6f030b175b004f1109b277cc3728b](https://sepolia.etherscan.io/tx/0x2d82322aeda2f15d02ef219c355c21a02be6f030b175b004f1109b277cc3728b)
+[Tx 0x90d63d0db98a7240321a63c638fe31b973bc7f3a39b592c2b6276de23dfd004d](https://sepolia.etherscan.io/tx/0x90d63d0db98a7240321a63c638fe31b973bc7f3a39b592c2b6276de23dfd004d)
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CastVotes.ts 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
 Using Infura provider on sepolia network
