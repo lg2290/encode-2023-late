@@ -3,19 +3,19 @@
 * Deployer: 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa
 * Account1: 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D
 
-## MyToken
+# MyToken
 
 * MyToken Contract
     * address: 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2
     * block: 3029422
 
-### MyTokenDeployment
+## MyTokenDeployment
 
 ```bash
 yarn run ts-node --files scripts/my-token/MyTokenDeployment.ts
 ```
 
-#### Logs
+### Logs
 
 <details>
     <summary>Success</summary>
@@ -31,13 +31,13 @@ Contract deployed, address 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2, tx 0xdd9d
 
 </details>
 
-### GiveVotingTokens
+## GiveVotingTokens
 
 ```bash
 yarn run ts-node --files scripts/my-token/GiveVotingTokens.ts [myTokenContractAddress]
 ```
 
-#### Logs
+### Logs
 
 <details>
     <summary>Error - Missing Args</summary>
@@ -254,13 +254,13 @@ Minted 100 tokens to address 0x5858769800844ab75397775Ca2Fa87B270F7FbBe in tx 0x
 
 </details>
 
-### DelegateVotingPower
+## DelegateVotingPower
 
 ```bash
 yarn run ts-node --files scripts/my-token/DelegateVotingPower.ts [myTokenContractAddress]
 ```
 
-#### Logs
+### Logs
 
 <details>
     <summary>Error - Missing Args</summary>
@@ -305,11 +305,11 @@ Delegated vote to 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa in transaction 0x4e
 
 </details>
 
-## TokenizedBallot
+# TokenizedBallot
 
-### Scripts
+## Scripts
 
-#### TokenizedBallotDeployment
+### TokenizedBallotDeployment
 
 ```bash
 yarn run ts-node --files scripts/tokenized-ballot/TokenizedBallotDeployment.ts [myTokenContractAddress] [blockNumber] [proposal1] [proposal2] [proposal3] ...
@@ -331,7 +331,7 @@ Error: Missing input data
 
 </details>
 
-#### CheckVotePower
+### CheckVotePower
 
 ```bash
 yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts [tokenizedBallotContractAddress]
@@ -357,7 +357,7 @@ Error: Missing input data
 
 </details>
 
-#### CastVotes
+### CastVotes
 
 ```bash
 yarn run ts-node --files scripts/tokenized-ballot/CastVotes.ts [tokenizedBallotContractAddress]
@@ -383,9 +383,9 @@ Error: Missing input data
 
 </details>
 
-### Executions
+## Executions
 
-#### Before Mints - Block 3029422
+### Before Mints - Block 3029422
 
 * address: 0xECd44b59b2B937E8a29b54878018B396A23b4BdE
 * block: 3030934
@@ -500,7 +500,7 @@ Voting
 
 </details>
 
-#### After Mints / Before Delegates - Block 3029651
+### After Mints / Before Delegates - Block 3029651
 
 * address: 0x6fdd2BD9B6681d634c33749E89643Fb3f9613Faf
 * block: 3030945
@@ -614,7 +614,7 @@ Voting
 
 </details>
 
-#### After Mints / After 1 Delegate - Block 3029652
+### After Mints / After 1 Delegate - Block 3029652
 
 * address: 0xb6aa3DA7043bc5b583dE37082E10a6952F45a5B8
 * block: 3030955
@@ -749,7 +749,7 @@ Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 277
 
 </details>
 
-#### After Delegates - Block 3029653
+### After Delegates - Block 3029653
 
 * address: 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
 * block: 3030985
@@ -826,366 +826,5 @@ Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 289
 ```
 
 </details>
-
-# ------------------------------------------------
-
-
-### TokenizedBallotDeployment
-
-```bash
-yarn run ts-node --files scripts/tokenized-ballot/TokenizedBallotDeployment.ts [myTokenContractAddress] [blockNumber] [proposal1] [proposal2] [proposal3]
-```
-
-#### Logs
-
-* Success - Before Mints
-```bash
-➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/TokenizedBallotDeployment.ts 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2 3029422 ONE TWO THREE
-Using Infura provider on sepolia network
-Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 514294631965720888
-Proposals:
-Proposal N. 1: ONE
-Proposal N. 2: TWO
-Proposal N. 3: THREE
-Deploying Tokenized Ballot contract, aiming vote power state in block 3029422
-Awaiting confirmation
-Contract deployed, address 0x1FD5E1B10224AC43b12A318a873f1591dBaA8d43, block number 3030120
-```
-
-* Success - After Mints / Before Delegates
-```bash
-➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/TokenizedBallotDeployment.ts 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2 3029651 ONE TWO THREE
-Using Infura provider on sepolia network
-Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 510627541448607799
-Proposals:
-Proposal N. 1: ONE
-Proposal N. 2: TWO
-Proposal N. 3: THREE
-Deploying Tokenized Ballot contract, aiming vote power state in block 3029651
-Awaiting confirmation
-Contract deployed, address 0xb896961C69B99aeEb4488f5c9203E4D48fF2cb24, block number 3030203
-```
-
-* Success - After Mints / After 1 Delegate
-```bash
-➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/TokenizedBallotDeployment.ts 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2 3029652 ONE TWO THREE
-Using Infura provider on sepolia network
-Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 511849904954312162
-Proposals:
-Proposal N. 1: ONE
-Proposal N. 2: TWO
-Proposal N. 3: THREE
-Deploying Tokenized Ballot contract, aiming vote power state in block 3029652
-Awaiting confirmation
-Contract deployed, address 0x957aBeD4B9FCbD82c9092052402cecaa1F89673B, block number 3030191
-```
-
-* Success - After Delegates
-```bash
-➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/TokenizedBallotDeployment.ts 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2 3029653 ONE TWO THREE
-Using Infura provider on sepolia network
-Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 513072268460016525
-Proposals:
-Proposal N. 1: ONE
-Proposal N. 2: TWO
-Proposal N. 3: THREE
-Deploying Tokenized Ballot contract, aiming vote power state in block 3029653
-Awaiting confirmation
-Contract deployed, address 0x576dCd896AE6f907B65b6bc06AC50E27Ebc5068E, block number 3030174
-```
-
-### CheckVotePower
-
-```bash
-yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts [tokenizedBallotContractAddress]
-```
-
-#### Logs
-
-* Success - Before Mints
-```bash
-➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts 0x1FD5E1B10224AC43b12A318a873f1591dBaA8d43
-Using Infura provider on sepolia network
-Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 513072268460016525
-Using Infura provider on sepolia network
-Signer address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D, balance 2271547612499324101
-Attaching ballot to address 0x1FD5E1B10224AC43b12A318a873f1591dBaA8d43
-Getting voting power to address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa
-Getting voting power to address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D
-Account 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa vote power is 0
-Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 0
-```
-
-* Success - After Mints / Before Delegates
-```bash
-➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts 0xb896961C69B99aeEb4488f5c9203E4D48fF2cb24
-Using Infura provider on sepolia network
-Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 509405177942903436
-Using Infura provider on sepolia network
-Signer address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D, balance 2271547612499324101
-Attaching ballot to address 0xb896961C69B99aeEb4488f5c9203E4D48fF2cb24
-Getting voting power to address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa
-Getting voting power to address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D
-Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 0
-Account 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa vote power is 0
-```
-
-* Success - After Mints / After 1 Delegate
-```bash
-➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts 0x957aBeD4B9FCbD82c9092052402cecaa1F89673B
-Using Infura provider on sepolia network
-Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 510627541448607799
-Using Infura provider on sepolia network
-Signer address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D, balance 2271547612499324101
-Attaching ballot to address 0x957aBeD4B9FCbD82c9092052402cecaa1F89673B
-Getting voting power to address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa
-Getting voting power to address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D
-Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 300
-Account 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa vote power is 0
-```
-
-* Success - After Mints / After 1 Delegate - After Votes
-```bash
-➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts 0x957aBeD4B9FCbD82c9092052402cecaa1F89673B
-Using Infura provider on sepolia network
-Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 510627541448607799
-Using Infura provider on sepolia network
-Signer address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D, balance 2271547612499324101
-Attaching ballot to address 0x957aBeD4B9FCbD82c9092052402cecaa1F89673B
-Getting voting power to address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa
-Getting voting power to address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D
-Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 300
-Account 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa vote power is 0
-```
-
-
-* Success - After Delegates
-```bash
-➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts 0x576dCd896AE6f907B65b6bc06AC50E27Ebc5068E
-Using Infura provider on sepolia network
-Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 511849904954312162
-Using Infura provider on sepolia network
-Signer address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D, balance 2271547612499324101
-Attaching ballot to address 0x576dCd896AE6f907B65b6bc06AC50E27Ebc5068E
-Getting voting power to address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa
-Getting voting power to address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D
-Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 300
-Account 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa vote power is 100
-```
-
-### CastVotes
-
-#### Logs
-
-* Error - Before Mints
-```bash
-➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CastVotes.ts 0x1FD5E1B10224AC43b12A318a873f1591dBaA8d43
-Using Infura provider on sepolia network
-Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 509405177942903436
-Using Infura provider on sepolia network
-Signer address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D, balance 2271547612499324101
-Attaching ballot to address 0x1FD5E1B10224AC43b12A318a873f1591dBaA8d43
-Voting
-<ref *1> Error: cannot estimate gas; transaction may fail or may require manual gas limit [ See: https://links.ethers.org/v5-errors-UNPREDICTABLE_GAS_LIMIT ] (error={"reason":"execution reverted: Voting power smaller than amount","code":"UNPREDICTABLE_GAS_LIMIT","method":"estimateGas","transaction":{"from":"0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa","maxPriorityFeePerGas":{"type":"BigNumber","hex":"0x59682f00"},"maxFeePerGas":{"type":"BigNumber","hex":"0x59682f0e"},"to":"0x1FD5E1B10224AC43b12A318a873f1591dBaA8d43","data":"0xb384abef0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000e","type":2,"accessList":null},"error":{"reason":"processing response error","code":"SERVER_ERROR","body":"{\"jsonrpc\":\"2.0\",\"id\":46,\"error\":{\"code\":3,\"data\":\"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74\",\"message\":\"execution reverted: Voting power smaller than amount\"}}","error":{"code":3,"data":"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74"},"requestBody":"{\"method\":\"eth_estimateGas\",\"params\":[{\"type\":\"0x2\",\"maxFeePerGas\":\"0x59682f0e\",\"maxPriorityFeePerGas\":\"0x59682f00\",\"from\":\"0xc29eb9a48c8a69273d99d52b4279084ae8ad8dfa\",\"to\":\"0x1fd5e1b10224ac43b12a318a873f1591dbaa8d43\",\"data\":\"0xb384abef0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000e\"}],\"id\":46,\"jsonrpc\":\"2.0\"}","requestMethod":"POST","url":"https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375"}}, tx={"data":"0xb384abef0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000e","to":{},"from":"0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa","type":2,"maxFeePerGas":{"type":"BigNumber","hex":"0x59682f0e"},"maxPriorityFeePerGas":{"type":"BigNumber","hex":"0x59682f00"},"nonce":{},"gasLimit":{},"chainId":{}}, code=UNPREDICTABLE_GAS_LIMIT, version=abstract-signer/5.7.0)
-    at Logger.makeError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
-    at Logger.throwError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
-    at /Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/abstract-signer/src.ts/index.ts:301:31
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async Promise.all (index 7) {
-  reason: 'cannot estimate gas; transaction may fail or may require manual gas limit',
-  code: 'UNPREDICTABLE_GAS_LIMIT',
-  error: Error: cannot estimate gas; transaction may fail or may require manual gas limit [ See: https://links.ethers.org/v5-errors-UNPREDICTABLE_GAS_LIMIT ] (reason="execution reverted: Voting power smaller than amount", method="estimateGas", transaction={"from":"0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa","maxPriorityFeePerGas":{"type":"BigNumber","hex":"0x59682f00"},"maxFeePerGas":{"type":"BigNumber","hex":"0x59682f0e"},"to":"0x1FD5E1B10224AC43b12A318a873f1591dBaA8d43","data":"0xb384abef0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000e","type":2,"accessList":null}, error={"reason":"processing response error","code":"SERVER_ERROR","body":"{\"jsonrpc\":\"2.0\",\"id\":46,\"error\":{\"code\":3,\"data\":\"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74\",\"message\":\"execution reverted: Voting power smaller than amount\"}}","error":{"code":3,"data":"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74"},"requestBody":"{\"method\":\"eth_estimateGas\",\"params\":[{\"type\":\"0x2\",\"maxFeePerGas\":\"0x59682f0e\",\"maxPriorityFeePerGas\":\"0x59682f00\",\"from\":\"0xc29eb9a48c8a69273d99d52b4279084ae8ad8dfa\",\"to\":\"0x1fd5e1b10224ac43b12a318a873f1591dbaa8d43\",\"data\":\"0xb384abef0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000e\"}],\"id\":46,\"jsonrpc\":\"2.0\"}","requestMethod":"POST","url":"https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375"}, code=UNPREDICTABLE_GAS_LIMIT, version=providers/5.7.2)
-      at Logger.makeError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
-      at Logger.throwError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
-      at checkError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/src.ts/json-rpc-provider.ts:78:20)
-      at InfuraProvider.<anonymous> (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/src.ts/json-rpc-provider.ts:642:20)
-      at step (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/lib/json-rpc-provider.js:48:23)
-      at Object.throw (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/lib/json-rpc-provider.js:29:53)
-      at rejected (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/lib/json-rpc-provider.js:21:65)
-      at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-    reason: 'execution reverted: Voting power smaller than amount',
-    code: 'UNPREDICTABLE_GAS_LIMIT',
-    method: 'estimateGas',
-    transaction: {
-      from: '0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa',
-      maxPriorityFeePerGas: [BigNumber],
-      maxFeePerGas: [BigNumber],
-      to: '0x1FD5E1B10224AC43b12A318a873f1591dBaA8d43',
-      data: '0xb384abef0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000e',
-      type: 2,
-      accessList: null
-    },
-    error: Error: processing response error (body="{\"jsonrpc\":\"2.0\",\"id\":46,\"error\":{\"code\":3,\"data\":\"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74\",\"message\":\"execution reverted: Voting power smaller than amount\"}}", error={"code":3,"data":"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74"}, requestBody="{\"method\":\"eth_estimateGas\",\"params\":[{\"type\":\"0x2\",\"maxFeePerGas\":\"0x59682f0e\",\"maxPriorityFeePerGas\":\"0x59682f00\",\"from\":\"0xc29eb9a48c8a69273d99d52b4279084ae8ad8dfa\",\"to\":\"0x1fd5e1b10224ac43b12a318a873f1591dbaa8d43\",\"data\":\"0xb384abef0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000e\"}],\"id\":46,\"jsonrpc\":\"2.0\"}", requestMethod="POST", url="https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375", code=SERVER_ERROR, version=web/5.7.1)
-        at Logger.makeError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
-        at Logger.throwError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
-        at /Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/src.ts/index.ts:341:28
-        at step (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:33:23)
-        at Object.next (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:14:53)
-        at fulfilled (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:5:58)
-        at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-      reason: 'processing response error',
-      code: 'SERVER_ERROR',
-      body: '{"jsonrpc":"2.0","id":46,"error":{"code":3,"data":"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74","message":"execution reverted: Voting power smaller than amount"}}',
-      error: [Error],
-      requestBody: '{"method":"eth_estimateGas","params":[{"type":"0x2","maxFeePerGas":"0x59682f0e","maxPriorityFeePerGas":"0x59682f00","from":"0xc29eb9a48c8a69273d99d52b4279084ae8ad8dfa","to":"0x1fd5e1b10224ac43b12a318a873f1591dbaa8d43","data":"0xb384abef0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000e"}],"id":46,"jsonrpc":"2.0"}',
-      requestMethod: 'POST',
-      url: 'https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375'
-    }
-  },
-  tx: {
-    data: '0xb384abef0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000000000000000000000000000000000000000000e',
-    to: Promise { '0x1FD5E1B10224AC43b12A318a873f1591dBaA8d43' },
-    from: '0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa',
-    type: 2,
-    maxFeePerGas: BigNumber { _hex: '0x59682f0e', _isBigNumber: true },
-    maxPriorityFeePerGas: BigNumber { _hex: '0x59682f00', _isBigNumber: true },
-    nonce: Promise { 16 },
-    gasLimit: Promise { <rejected> [Circular *1] },
-    chainId: Promise { 11155111 }
-  }
-}
-```
-
-* Error - After Mints / Before Delegates
-```bash
-➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CastVotes.ts 0xb896961C69B99aeEb4488f5c9203E4D48fF2cb24
-Using Infura provider on sepolia network
-Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 509405177942903436
-Using Infura provider on sepolia network
-Signer address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D, balance 2271547612499324101
-Attaching ballot to address 0xb896961C69B99aeEb4488f5c9203E4D48fF2cb24
-Voting
-<ref *1> Error: cannot estimate gas; transaction may fail or may require manual gas limit [ See: https://links.ethers.org/v5-errors-UNPREDICTABLE_GAS_LIMIT ] (error={"reason":"execution reverted: Voting power smaller than amount","code":"UNPREDICTABLE_GAS_LIMIT","method":"estimateGas","transaction":{"from":"0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa","maxPriorityFeePerGas":{"type":"BigNumber","hex":"0x59682f00"},"maxFeePerGas":{"type":"BigNumber","hex":"0x59682f0e"},"to":"0xb896961C69B99aeEb4488f5c9203E4D48fF2cb24","data":"0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b","type":2,"accessList":null},"error":{"reason":"processing response error","code":"SERVER_ERROR","body":"{\"jsonrpc\":\"2.0\",\"id\":46,\"error\":{\"code\":3,\"data\":\"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74\",\"message\":\"execution reverted: Voting power smaller than amount\"}}","error":{"code":3,"data":"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74"},"requestBody":"{\"method\":\"eth_estimateGas\",\"params\":[{\"type\":\"0x2\",\"maxFeePerGas\":\"0x59682f0e\",\"maxPriorityFeePerGas\":\"0x59682f00\",\"from\":\"0xc29eb9a48c8a69273d99d52b4279084ae8ad8dfa\",\"to\":\"0xb896961c69b99aeeb4488f5c9203e4d48ff2cb24\",\"data\":\"0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b\"}],\"id\":46,\"jsonrpc\":\"2.0\"}","requestMethod":"POST","url":"https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375"}}, tx={"data":"0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b","to":{},"from":"0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa","type":2,"maxFeePerGas":{"type":"BigNumber","hex":"0x59682f0e"},"maxPriorityFeePerGas":{"type":"BigNumber","hex":"0x59682f00"},"nonce":{},"gasLimit":{},"chainId":{}}, code=UNPREDICTABLE_GAS_LIMIT, version=abstract-signer/5.7.0)
-    at Logger.makeError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
-    at Logger.throwError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
-    at /Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/abstract-signer/src.ts/index.ts:301:31
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async Promise.all (index 7) {
-  reason: 'cannot estimate gas; transaction may fail or may require manual gas limit',
-  code: 'UNPREDICTABLE_GAS_LIMIT',
-  error: Error: cannot estimate gas; transaction may fail or may require manual gas limit [ See: https://links.ethers.org/v5-errors-UNPREDICTABLE_GAS_LIMIT ] (reason="execution reverted: Voting power smaller than amount", method="estimateGas", transaction={"from":"0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa","maxPriorityFeePerGas":{"type":"BigNumber","hex":"0x59682f00"},"maxFeePerGas":{"type":"BigNumber","hex":"0x59682f0e"},"to":"0xb896961C69B99aeEb4488f5c9203E4D48fF2cb24","data":"0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b","type":2,"accessList":null}, error={"reason":"processing response error","code":"SERVER_ERROR","body":"{\"jsonrpc\":\"2.0\",\"id\":46,\"error\":{\"code\":3,\"data\":\"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74\",\"message\":\"execution reverted: Voting power smaller than amount\"}}","error":{"code":3,"data":"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74"},"requestBody":"{\"method\":\"eth_estimateGas\",\"params\":[{\"type\":\"0x2\",\"maxFeePerGas\":\"0x59682f0e\",\"maxPriorityFeePerGas\":\"0x59682f00\",\"from\":\"0xc29eb9a48c8a69273d99d52b4279084ae8ad8dfa\",\"to\":\"0xb896961c69b99aeeb4488f5c9203e4d48ff2cb24\",\"data\":\"0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b\"}],\"id\":46,\"jsonrpc\":\"2.0\"}","requestMethod":"POST","url":"https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375"}, code=UNPREDICTABLE_GAS_LIMIT, version=providers/5.7.2)
-      at Logger.makeError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
-      at Logger.throwError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
-      at checkError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/src.ts/json-rpc-provider.ts:78:20)
-      at InfuraProvider.<anonymous> (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/src.ts/json-rpc-provider.ts:642:20)
-      at step (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/lib/json-rpc-provider.js:48:23)
-      at Object.throw (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/lib/json-rpc-provider.js:29:53)
-      at rejected (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/lib/json-rpc-provider.js:21:65)
-      at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-    reason: 'execution reverted: Voting power smaller than amount',
-    code: 'UNPREDICTABLE_GAS_LIMIT',
-    method: 'estimateGas',
-    transaction: {
-      from: '0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa',
-      maxPriorityFeePerGas: [BigNumber],
-      maxFeePerGas: [BigNumber],
-      to: '0xb896961C69B99aeEb4488f5c9203E4D48fF2cb24',
-      data: '0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b',
-      type: 2,
-      accessList: null
-    },
-    error: Error: processing response error (body="{\"jsonrpc\":\"2.0\",\"id\":46,\"error\":{\"code\":3,\"data\":\"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74\",\"message\":\"execution reverted: Voting power smaller than amount\"}}", error={"code":3,"data":"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74"}, requestBody="{\"method\":\"eth_estimateGas\",\"params\":[{\"type\":\"0x2\",\"maxFeePerGas\":\"0x59682f0e\",\"maxPriorityFeePerGas\":\"0x59682f00\",\"from\":\"0xc29eb9a48c8a69273d99d52b4279084ae8ad8dfa\",\"to\":\"0xb896961c69b99aeeb4488f5c9203e4d48ff2cb24\",\"data\":\"0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b\"}],\"id\":46,\"jsonrpc\":\"2.0\"}", requestMethod="POST", url="https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375", code=SERVER_ERROR, version=web/5.7.1)
-        at Logger.makeError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
-        at Logger.throwError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
-        at /Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/src.ts/index.ts:341:28
-        at step (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:33:23)
-        at Object.next (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:14:53)
-        at fulfilled (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:5:58)
-        at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-      reason: 'processing response error',
-      code: 'SERVER_ERROR',
-      body: '{"jsonrpc":"2.0","id":46,"error":{"code":3,"data":"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74","message":"execution reverted: Voting power smaller than amount"}}',
-      error: [Error],
-      requestBody: '{"method":"eth_estimateGas","params":[{"type":"0x2","maxFeePerGas":"0x59682f0e","maxPriorityFeePerGas":"0x59682f00","from":"0xc29eb9a48c8a69273d99d52b4279084ae8ad8dfa","to":"0xb896961c69b99aeeb4488f5c9203e4d48ff2cb24","data":"0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b"}],"id":46,"jsonrpc":"2.0"}',
-      requestMethod: 'POST',
-      url: 'https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375'
-    }
-  },
-  tx: {
-    data: '0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b',
-    to: Promise { '0xb896961C69B99aeEb4488f5c9203E4D48fF2cb24' },
-    from: '0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa',
-    type: 2,
-    maxFeePerGas: BigNumber { _hex: '0x59682f0e', _isBigNumber: true },
-    maxPriorityFeePerGas: BigNumber { _hex: '0x59682f00', _isBigNumber: true },
-    nonce: Promise { 16 },
-    gasLimit: Promise { <rejected> [Circular *1] },
-    chainId: Promise { 11155111 }
-  }
-}
-```
-
-* Partial Error - After Mints / After 1 Delegate
-```bash
-➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CastVotes.ts 0x957aBeD4B9FCbD82c9092052402cecaa1F89673B
-Using Infura provider on sepolia network
-Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 509405177942903436
-Using Infura provider on sepolia network
-Signer address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D, balance 2271547612499324101
-Attaching ballot to address 0x957aBeD4B9FCbD82c9092052402cecaa1F89673B
-Voting
-Address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D voted 18 for proposal 0, tx 0xd093d4916cc7dab4305443a82bba2128f2ee4893aa3c6227ff0b3203be6e4aee, block number 3030500
-Attaching ballot to address 0x957aBeD4B9FCbD82c9092052402cecaa1F89673B
-Voting
-<ref *1> Error: cannot estimate gas; transaction may fail or may require manual gas limit [ See: https://links.ethers.org/v5-errors-UNPREDICTABLE_GAS_LIMIT ] (error={"reason":"execution reverted: Voting power smaller than amount","code":"UNPREDICTABLE_GAS_LIMIT","method":"estimateGas","transaction":{"from":"0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa","maxPriorityFeePerGas":{"type":"BigNumber","hex":"0x59682f00"},"maxFeePerGas":{"type":"BigNumber","hex":"0x59682f0e"},"to":"0x957aBeD4B9FCbD82c9092052402cecaa1F89673B","data":"0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b","type":2,"accessList":null},"error":{"reason":"processing response error","code":"SERVER_ERROR","body":"{\"jsonrpc\":\"2.0\",\"id\":46,\"error\":{\"code\":3,\"data\":\"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74\",\"message\":\"execution reverted: Voting power smaller than amount\"}}","error":{"code":3,"data":"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74"},"requestBody":"{\"method\":\"eth_estimateGas\",\"params\":[{\"type\":\"0x2\",\"maxFeePerGas\":\"0x59682f0e\",\"maxPriorityFeePerGas\":\"0x59682f00\",\"from\":\"0xc29eb9a48c8a69273d99d52b4279084ae8ad8dfa\",\"to\":\"0x957abed4b9fcbd82c9092052402cecaa1f89673b\",\"data\":\"0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b\"}],\"id\":46,\"jsonrpc\":\"2.0\"}","requestMethod":"POST","url":"https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375"}}, tx={"data":"0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b","to":{},"from":"0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa","type":2,"maxFeePerGas":{"type":"BigNumber","hex":"0x59682f0e"},"maxPriorityFeePerGas":{"type":"BigNumber","hex":"0x59682f00"},"nonce":{},"gasLimit":{},"chainId":{}}, code=UNPREDICTABLE_GAS_LIMIT, version=abstract-signer/5.7.0)
-    at Logger.makeError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
-    at Logger.throwError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
-    at /Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/abstract-signer/src.ts/index.ts:301:31
-    at processTicksAndRejections (node:internal/process/task_queues:95:5)
-    at async Promise.all (index 7) {
-  reason: 'cannot estimate gas; transaction may fail or may require manual gas limit',
-  code: 'UNPREDICTABLE_GAS_LIMIT',
-  error: Error: cannot estimate gas; transaction may fail or may require manual gas limit [ See: https://links.ethers.org/v5-errors-UNPREDICTABLE_GAS_LIMIT ] (reason="execution reverted: Voting power smaller than amount", method="estimateGas", transaction={"from":"0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa","maxPriorityFeePerGas":{"type":"BigNumber","hex":"0x59682f00"},"maxFeePerGas":{"type":"BigNumber","hex":"0x59682f0e"},"to":"0x957aBeD4B9FCbD82c9092052402cecaa1F89673B","data":"0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b","type":2,"accessList":null}, error={"reason":"processing response error","code":"SERVER_ERROR","body":"{\"jsonrpc\":\"2.0\",\"id\":46,\"error\":{\"code\":3,\"data\":\"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74\",\"message\":\"execution reverted: Voting power smaller than amount\"}}","error":{"code":3,"data":"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74"},"requestBody":"{\"method\":\"eth_estimateGas\",\"params\":[{\"type\":\"0x2\",\"maxFeePerGas\":\"0x59682f0e\",\"maxPriorityFeePerGas\":\"0x59682f00\",\"from\":\"0xc29eb9a48c8a69273d99d52b4279084ae8ad8dfa\",\"to\":\"0x957abed4b9fcbd82c9092052402cecaa1f89673b\",\"data\":\"0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b\"}],\"id\":46,\"jsonrpc\":\"2.0\"}","requestMethod":"POST","url":"https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375"}, code=UNPREDICTABLE_GAS_LIMIT, version=providers/5.7.2)
-      at Logger.makeError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
-      at Logger.throwError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
-      at checkError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/src.ts/json-rpc-provider.ts:78:20)
-      at InfuraProvider.<anonymous> (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/src.ts/json-rpc-provider.ts:642:20)
-      at step (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/lib/json-rpc-provider.js:48:23)
-      at Object.throw (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/lib/json-rpc-provider.js:29:53)
-      at rejected (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/lib/json-rpc-provider.js:21:65)
-      at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-    reason: 'execution reverted: Voting power smaller than amount',
-    code: 'UNPREDICTABLE_GAS_LIMIT',
-    method: 'estimateGas',
-    transaction: {
-      from: '0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa',
-      maxPriorityFeePerGas: [BigNumber],
-      maxFeePerGas: [BigNumber],
-      to: '0x957aBeD4B9FCbD82c9092052402cecaa1F89673B',
-      data: '0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b',
-      type: 2,
-      accessList: null
-    },
-    error: Error: processing response error (body="{\"jsonrpc\":\"2.0\",\"id\":46,\"error\":{\"code\":3,\"data\":\"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74\",\"message\":\"execution reverted: Voting power smaller than amount\"}}", error={"code":3,"data":"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74"}, requestBody="{\"method\":\"eth_estimateGas\",\"params\":[{\"type\":\"0x2\",\"maxFeePerGas\":\"0x59682f0e\",\"maxPriorityFeePerGas\":\"0x59682f00\",\"from\":\"0xc29eb9a48c8a69273d99d52b4279084ae8ad8dfa\",\"to\":\"0x957abed4b9fcbd82c9092052402cecaa1f89673b\",\"data\":\"0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b\"}],\"id\":46,\"jsonrpc\":\"2.0\"}", requestMethod="POST", url="https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375", code=SERVER_ERROR, version=web/5.7.1)
-        at Logger.makeError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
-        at Logger.throwError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
-        at /Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/src.ts/index.ts:341:28
-        at step (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:33:23)
-        at Object.next (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:14:53)
-        at fulfilled (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:5:58)
-        at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-      reason: 'processing response error',
-      code: 'SERVER_ERROR',
-      body: '{"jsonrpc":"2.0","id":46,"error":{"code":3,"data":"0x08c379a000000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000020566f74696e6720706f77657220736d616c6c6572207468616e20616d6f756e74","message":"execution reverted: Voting power smaller than amount"}}',
-      error: [Error],
-      requestBody: '{"method":"eth_estimateGas","params":[{"type":"0x2","maxFeePerGas":"0x59682f0e","maxPriorityFeePerGas":"0x59682f00","from":"0xc29eb9a48c8a69273d99d52b4279084ae8ad8dfa","to":"0x957abed4b9fcbd82c9092052402cecaa1f89673b","data":"0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b"}],"id":46,"jsonrpc":"2.0"}',
-      requestMethod: 'POST',
-      url: 'https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375'
-    }
-  },
-  tx: {
-    data: '0xb384abef0000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000001b',
-    to: Promise { '0x957aBeD4B9FCbD82c9092052402cecaa1F89673B' },
-    from: '0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa',
-    type: 2,
-    maxFeePerGas: BigNumber { _hex: '0x59682f0e', _isBigNumber: true },
-    maxPriorityFeePerGas: BigNumber { _hex: '0x59682f00', _isBigNumber: true },
-    nonce: Promise { 16 },
-    gasLimit: Promise { <rejected> [Circular *1] },
-    chainId: Promise { 11155111 }
-  }
-}
-```
-
 
 # aaa
