@@ -14,16 +14,17 @@ yarn run ts-node --files scripts/my-token/MyTokenDeployment.ts
 
 #### Logs
 
-* Success
-
-```bash
-➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/my-token/MyTokenDeployment.ts
-Using Infura provider on sepolia network
-Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 521640156000000000
-Deploying MyToken contract
-Awaiting confirmation
-Contract deployed, address 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2, tx 0xdd9d556ce2251a8859c940a2820c68eeb62b103f207bfdc38c4b11c0877d0c0b, block number 3029422
-```
+<details>
+    <summary>Success</summary>
+    ```bash
+    ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/my-token/MyTokenDeployment.ts
+    Using Infura provider on sepolia network
+    Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 521640156000000000
+    Deploying MyToken contract
+    Awaiting confirmation
+    Contract deployed, address 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2, tx 0xdd9d556ce2251a8859c940a2820c68eeb62b103f207bfdc38c4b11c0877d0c0b, block number 3029422
+    ```
+</details>
 
 ### GiveVotingTokens
 
@@ -33,97 +34,106 @@ yarn run ts-node --files scripts/my-token/GiveVotingTokens.ts [myTokenContractAd
 
 #### Logs
 
-* Error - Missing Args
-```bash
-➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/my-token/GiveVotingTokens.ts
-Error: Missing input data
-    at validateInputDataSize (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/scripts/helper/InputDataHelper.ts:11:15)
-    at extractInputData (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/scripts/helper/InputDataHelper.ts:4:5)
-    at main (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/scripts/my-token/GiveVotingTokens.ts:17:49)
-    at Object.<anonymous> (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/scripts/my-token/GiveVotingTokens.ts:9:1)
-    at Module._compile (node:internal/modules/cjs/loader:1254:14)
-    at Module.m._compile (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/ts-node/src/index.ts:1618:23)
-    at Module._extensions..js (node:internal/modules/cjs/loader:1308:10)
-    at Object.require.extensions.<computed> [as .ts] (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/ts-node/src/index.ts:1621:12)
-    at Module.load (node:internal/modules/cjs/loader:1117:32)
-    at Function.Module._load (node:internal/modules/cjs/loader:958:12)
-```
+<details>
+    <summary>Error - Missing Args</summary>
+    ```bash
+    ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/my-token/GiveVotingTokens.ts
+    Error: Missing input data
+        at validateInputDataSize (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/scripts/helper/InputDataHelper.ts:11:15)
+        at extractInputData (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/scripts/helper/InputDataHelper.ts:4:5)
+        at main (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/scripts/my-token/GiveVotingTokens.ts:17:49)
+        at Object.<anonymous> (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/scripts/my-token/GiveVotingTokens.ts:9:1)
+        at Module._compile (node:internal/modules/cjs/loader:1254:14)
+        at Module.m._compile (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/ts-node/src/index.ts:1618:23)
+        at Module._extensions..js (node:internal/modules/cjs/loader:1308:10)
+        at Object.require.extensions.<computed> [as .ts] (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/ts-node/src/index.ts:1621:12)
+        at Module.load (node:internal/modules/cjs/loader:1117:32)
+        at Function.Module._load (node:internal/modules/cjs/loader:958:12)
+    ```
+</details>
 
-* Error - Missing await:
-```bash
-➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/my-token/GiveVotingTokens.ts 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2
-Using Infura provider on sepolia network
-Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 515657360972080290
-Using Infura provider on sepolia network
-Signer address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D, balance 2271692448000000000
-Attaching MyToken to address 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2
-Minting tokens
-Minting tokens
-Minting tokens
-Minting tokens
-/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269
-        const error: any = new Error(message);
-                           ^
-Error: replacement fee too low [ See: https://links.ethers.org/v5-errors-REPLACEMENT_UNDERPRICED ] (error={"reason":"processing response error","code":"SERVER_ERROR","body":"{\"jsonrpc\":\"2.0\",\"id\":62,\"error\":{\"code\":-32000,\"message\":\"replacement transaction underpriced\"}}","error":{"code":-32000},"requestBody":"{\"method\":\"eth_sendRawTransaction\",\"params\":[\"0x02f8b383aa36a7018459682f008459682f0e8301e49094dcca0572ac7bf14576cf5d5e8e7cf31450157fa280b84440c10f19000000000000000000000000fc289231534c6f14efd0f2496550aa6cbfcf612d0000000000000000000000000000000000000000000000000000000000000032c080a02ef28c573241afb611865edde5578678ed5ad2b0090fd0a6879080f0ee501482a011035ed0e5a40f76092455590bfcdbe8887053d9bdccb5ac5523c2f153eaed8a\"],\"id\":62,\"jsonrpc\":\"2.0\"}","requestMethod":"POST","url":"https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375"}, method="sendTransaction", transaction="0x02f8b383aa36a7018459682f008459682f0e8301e49094dcca0572ac7bf14576cf5d5e8e7cf31450157fa280b84440c10f19000000000000000000000000fc289231534c6f14efd0f2496550aa6cbfcf612d0000000000000000000000000000000000000000000000000000000000000032c080a02ef28c573241afb611865edde5578678ed5ad2b0090fd0a6879080f0ee501482a011035ed0e5a40f76092455590bfcdbe8887053d9bdccb5ac5523c2f153eaed8a", code=REPLACEMENT_UNDERPRICED, version=providers/5.7.2)
-    at Logger.makeError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
-    at Logger.throwError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
-    at checkError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/src.ts/json-rpc-provider.ts:112:16)
-    at InfuraProvider.<anonymous> (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/src.ts/json-rpc-provider.ts:642:20)
-    at step (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/lib/json-rpc-provider.js:48:23)
-    at Object.throw (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/lib/json-rpc-provider.js:29:53)
-    at rejected (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/lib/json-rpc-provider.js:21:65)
-    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-  reason: 'replacement fee too low',
-  code: 'REPLACEMENT_UNDERPRICED',
-  error: Error: processing response error (body="{\"jsonrpc\":\"2.0\",\"id\":62,\"error\":{\"code\":-32000,\"message\":\"replacement transaction underpriced\"}}", error={"code":-32000}, requestBody="{\"method\":\"eth_sendRawTransaction\",\"params\":[\"0x02f8b383aa36a7018459682f008459682f0e8301e49094dcca0572ac7bf14576cf5d5e8e7cf31450157fa280b84440c10f19000000000000000000000000fc289231534c6f14efd0f2496550aa6cbfcf612d0000000000000000000000000000000000000000000000000000000000000032c080a02ef28c573241afb611865edde5578678ed5ad2b0090fd0a6879080f0ee501482a011035ed0e5a40f76092455590bfcdbe8887053d9bdccb5ac5523c2f153eaed8a\"],\"id\":62,\"jsonrpc\":\"2.0\"}", requestMethod="POST", url="https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375", code=SERVER_ERROR, version=web/5.7.1)
-      at Logger.makeError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
-      at Logger.throwError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
-      at /Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/src.ts/index.ts:341:28
-      at step (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:33:23)
-      at Object.next (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:14:53)
-      at fulfilled (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:5:58)
-      at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-    reason: 'processing response error',
-    code: 'SERVER_ERROR',
-    body: '{"jsonrpc":"2.0","id":62,"error":{"code":-32000,"message":"replacement transaction underpriced"}}',
-    error: Error: replacement transaction underpriced
-        at getResult (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/src.ts/json-rpc-provider.ts:142:28)
-        at processJsonFunc (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/src.ts/index.ts:383:22)
-        at /Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/src.ts/index.ts:320:42
+
+<details>
+    <summary>Error - Missing await:</summary>
+    ```bash
+    ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/my-token/GiveVotingTokens.ts 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2
+    Using Infura provider on sepolia network
+    Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 515657360972080290
+    Using Infura provider on sepolia network
+    Signer address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D, balance 2271692448000000000
+    Attaching MyToken to address 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2
+    Minting tokens
+    Minting tokens
+    Minting tokens
+    Minting tokens
+    /Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269
+            const error: any = new Error(message);
+                            ^
+    Error: replacement fee too low [ See: https://links.ethers.org/v5-errors-REPLACEMENT_UNDERPRICED ] (error={"reason":"processing response error","code":"SERVER_ERROR","body":"{\"jsonrpc\":\"2.0\",\"id\":62,\"error\":{\"code\":-32000,\"message\":\"replacement transaction underpriced\"}}","error":{"code":-32000},"requestBody":"{\"method\":\"eth_sendRawTransaction\",\"params\":[\"0x02f8b383aa36a7018459682f008459682f0e8301e49094dcca0572ac7bf14576cf5d5e8e7cf31450157fa280b84440c10f19000000000000000000000000fc289231534c6f14efd0f2496550aa6cbfcf612d0000000000000000000000000000000000000000000000000000000000000032c080a02ef28c573241afb611865edde5578678ed5ad2b0090fd0a6879080f0ee501482a011035ed0e5a40f76092455590bfcdbe8887053d9bdccb5ac5523c2f153eaed8a\"],\"id\":62,\"jsonrpc\":\"2.0\"}","requestMethod":"POST","url":"https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375"}, method="sendTransaction", transaction="0x02f8b383aa36a7018459682f008459682f0e8301e49094dcca0572ac7bf14576cf5d5e8e7cf31450157fa280b84440c10f19000000000000000000000000fc289231534c6f14efd0f2496550aa6cbfcf612d0000000000000000000000000000000000000000000000000000000000000032c080a02ef28c573241afb611865edde5578678ed5ad2b0090fd0a6879080f0ee501482a011035ed0e5a40f76092455590bfcdbe8887053d9bdccb5ac5523c2f153eaed8a", code=REPLACEMENT_UNDERPRICED, version=providers/5.7.2)
+        at Logger.makeError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
+        at Logger.throwError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
+        at checkError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/src.ts/json-rpc-provider.ts:112:16)
+        at InfuraProvider.<anonymous> (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/src.ts/json-rpc-provider.ts:642:20)
+        at step (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/lib/json-rpc-provider.js:48:23)
+        at Object.throw (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/lib/json-rpc-provider.js:29:53)
+        at rejected (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/lib/json-rpc-provider.js:21:65)
+        at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+    reason: 'replacement fee too low',
+    code: 'REPLACEMENT_UNDERPRICED',
+    error: Error: processing response error (body="{\"jsonrpc\":\"2.0\",\"id\":62,\"error\":{\"code\":-32000,\"message\":\"replacement transaction underpriced\"}}", error={"code":-32000}, requestBody="{\"method\":\"eth_sendRawTransaction\",\"params\":[\"0x02f8b383aa36a7018459682f008459682f0e8301e49094dcca0572ac7bf14576cf5d5e8e7cf31450157fa280b84440c10f19000000000000000000000000fc289231534c6f14efd0f2496550aa6cbfcf612d0000000000000000000000000000000000000000000000000000000000000032c080a02ef28c573241afb611865edde5578678ed5ad2b0090fd0a6879080f0ee501482a011035ed0e5a40f76092455590bfcdbe8887053d9bdccb5ac5523c2f153eaed8a\"],\"id\":62,\"jsonrpc\":\"2.0\"}", requestMethod="POST", url="https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375", code=SERVER_ERROR, version=web/5.7.1)
+        at Logger.makeError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
+        at Logger.throwError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
+        at /Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/src.ts/index.ts:341:28
         at step (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:33:23)
         at Object.next (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:14:53)
         at fulfilled (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:5:58)
         at processTicksAndRejections (node:internal/process/task_queues:95:5) {
-      code: -32000,
-      data: undefined
+        reason: 'processing response error',
+        code: 'SERVER_ERROR',
+        body: '{"jsonrpc":"2.0","id":62,"error":{"code":-32000,"message":"replacement transaction underpriced"}}',
+        error: Error: replacement transaction underpriced
+            at getResult (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/providers/src.ts/json-rpc-provider.ts:142:28)
+            at processJsonFunc (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/src.ts/index.ts:383:22)
+            at /Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/src.ts/index.ts:320:42
+            at step (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:33:23)
+            at Object.next (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:14:53)
+            at fulfilled (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/web/lib/index.js:5:58)
+            at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+        code: -32000,
+        data: undefined
+        },
+        requestBody: '{"method":"eth_sendRawTransaction","params":["0x02f8b383aa36a7018459682f008459682f0e8301e49094dcca0572ac7bf14576cf5d5e8e7cf31450157fa280b84440c10f19000000000000000000000000fc289231534c6f14efd0f2496550aa6cbfcf612d0000000000000000000000000000000000000000000000000000000000000032c080a02ef28c573241afb611865edde5578678ed5ad2b0090fd0a6879080f0ee501482a011035ed0e5a40f76092455590bfcdbe8887053d9bdccb5ac5523c2f153eaed8a"],"id":62,"jsonrpc":"2.0"}',
+        requestMethod: 'POST',
+        url: 'https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375'
     },
-    requestBody: '{"method":"eth_sendRawTransaction","params":["0x02f8b383aa36a7018459682f008459682f0e8301e49094dcca0572ac7bf14576cf5d5e8e7cf31450157fa280b84440c10f19000000000000000000000000fc289231534c6f14efd0f2496550aa6cbfcf612d0000000000000000000000000000000000000000000000000000000000000032c080a02ef28c573241afb611865edde5578678ed5ad2b0090fd0a6879080f0ee501482a011035ed0e5a40f76092455590bfcdbe8887053d9bdccb5ac5523c2f153eaed8a"],"id":62,"jsonrpc":"2.0"}',
-    requestMethod: 'POST',
-    url: 'https://sepolia.infura.io/v3/952510520d3947c99e9a81768e8db375'
-  },
-  method: 'sendTransaction',
-  transaction: {
-    type: 2,
-    chainId: 11155111,
-    nonce: 1,
-    maxPriorityFeePerGas: BigNumber { _hex: '0x59682f00', _isBigNumber: true },
-    maxFeePerGas: BigNumber { _hex: '0x59682f0e', _isBigNumber: true },
-    gasPrice: null,
-    gasLimit: BigNumber { _hex: '0x01e490', _isBigNumber: true },
-    to: '0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2',
-    value: BigNumber { _hex: '0x00', _isBigNumber: true },
-    data: '0x40c10f19000000000000000000000000fc289231534c6f14efd0f2496550aa6cbfcf612d0000000000000000000000000000000000000000000000000000000000000032',
-    accessList: [],
-    hash: '0x50b9e03af37adc38e9119ccd154f251ba32f0ad0b4f8c9671d87054e5a3ffb40',
-    v: 0,
-    r: '0x2ef28c573241afb611865edde5578678ed5ad2b0090fd0a6879080f0ee501482',
-    s: '0x11035ed0e5a40f76092455590bfcdbe8887053d9bdccb5ac5523c2f153eaed8a',
-    from: '0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa',
-    confirmations: 0
-  },
-  transactionHash: '0x50b9e03af37adc38e9119ccd154f251ba32f0ad0b4f8c9671d87054e5a3ffb40'
-}
-```
+    method: 'sendTransaction',
+    transaction: {
+        type: 2,
+        chainId: 11155111,
+        nonce: 1,
+        maxPriorityFeePerGas: BigNumber { _hex: '0x59682f00', _isBigNumber: true },
+        maxFeePerGas: BigNumber { _hex: '0x59682f0e', _isBigNumber: true },
+        gasPrice: null,
+        gasLimit: BigNumber { _hex: '0x01e490', _isBigNumber: true },
+        to: '0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2',
+        value: BigNumber { _hex: '0x00', _isBigNumber: true },
+        data: '0x40c10f19000000000000000000000000fc289231534c6f14efd0f2496550aa6cbfcf612d0000000000000000000000000000000000000000000000000000000000000032',
+        accessList: [],
+        hash: '0x50b9e03af37adc38e9119ccd154f251ba32f0ad0b4f8c9671d87054e5a3ffb40',
+        v: 0,
+        r: '0x2ef28c573241afb611865edde5578678ed5ad2b0090fd0a6879080f0ee501482',
+        s: '0x11035ed0e5a40f76092455590bfcdbe8887053d9bdccb5ac5523c2f153eaed8a',
+        from: '0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa',
+        confirmations: 0
+    },
+    transactionHash: '0x50b9e03af37adc38e9119ccd154f251ba32f0ad0b4f8c9671d87054e5a3ffb40'
+    }
+    ```
+</details>
+
+<details>
+    <summary>aaaaaaaaaa</summary>
+</details>
 
 * Error - partial error (can't execute multiple transactions?):
 ```bash
