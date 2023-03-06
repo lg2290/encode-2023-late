@@ -19,8 +19,8 @@ async function main() {
 
     const tokenizedBallotContract = attachToTokenizedBalot(deployer, tokenBallotContractAddress);
 
-    getVotePower(tokenizedBallotContract, deployer.address);
-    getVotePower(tokenizedBallotContract, account1.address);
+    await getVotePower(tokenizedBallotContract, deployer.address);
+    await getVotePower(tokenizedBallotContract, account1.address);
 }
 
 async function getVotePower(tokenizedBallotContract: TokenizedBallot, address: string) {
