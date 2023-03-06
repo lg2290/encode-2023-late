@@ -1,12 +1,12 @@
 # Weekend 3 Project - Tokenized Ballot
 
-* Deployer: 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa
-* Account1: 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D
+* Deployer: [0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa](https://sepolia.etherscan.io/address/0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa)
+* Account1: [0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D](https://sepolia.etherscan.io/address/0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D)
 
 # MyToken
 
 * MyToken Contract
-    * address: 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2
+    * address: [0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2](https://sepolia.etherscan.io/address/0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2)
     * block: 3029422
 
 ## MyTokenDeployment
@@ -414,7 +414,7 @@ Error: Missing input data
 
 ### Before Mints - Block 3029422
 
-* address: 0xECd44b59b2B937E8a29b54878018B396A23b4BdE
+* address: [0xECd44b59b2B937E8a29b54878018B396A23b4BdE](https://sepolia.etherscan.io/address/0xECd44b59b2B937E8a29b54878018B396A23b4BdE)
 * block: 3030934
 
 <details>
@@ -565,7 +565,7 @@ Error: call revert exception; VM Exception while processing transaction: reverte
 
 ### After Mints / Before Delegates - Block 3029651
 
-* address: 0x6fdd2BD9B6681d634c33749E89643Fb3f9613Faf
+* address: [0x6fdd2BD9B6681d634c33749E89643Fb3f9613Faf](https://sepolia.etherscan.io/address/0x6fdd2BD9B6681d634c33749E89643Fb3f9613Faf)
 * block: 3030945
 
 <details>
@@ -715,7 +715,7 @@ Error: call revert exception; VM Exception while processing transaction: reverte
 
 ### After Mints / After 1 Delegate - Block 3029652
 
-* address: 0xb6aa3DA7043bc5b583dE37082E10a6952F45a5B8
+* address: [0xb6aa3DA7043bc5b583dE37082E10a6952F45a5B8](https://sepolia.etherscan.io/address/0xb6aa3DA7043bc5b583dE37082E10a6952F45a5B8)
 * block: 3030955
 
 <details>
@@ -863,7 +863,7 @@ Proposal TWO, index 1, winning with 23 votes
 
 ### After Delegates - Block 3029653
 
-* address: 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+* address: [0xc33e80202325d8264f427b248DD2704d48d0Fc3F](https://sepolia.etherscan.io/address/0xc33e80202325d8264f427b248DD2704d48d0Fc3F)
 * block: 3030985
 
 <details>
