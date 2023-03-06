@@ -390,7 +390,9 @@ Error: Missing input data
 * address: 0xECd44b59b2B937E8a29b54878018B396A23b4BdE
 * block: 3030934
 
-##### TokenizedBallotDeployment
+<details>
+    <summary>TokenizedBallotDeployment</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/TokenizedBallotDeployment.ts 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2 3029422 ONE TWO THREE
 Using Infura provider on sepolia network
@@ -404,7 +406,11 @@ Awaiting confirmation
 Contract deployed, address 0xECd44b59b2B937E8a29b54878018B396A23b4BdE, block number 3030934
 ```
 
-##### CheckVotePower
+</details>
+
+<details>
+    <summary>CheckVotePower</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts 0xECd44b59b2B937E8a29b54878018B396A23b4BdE
 Using Infura provider on sepolia network
@@ -419,7 +425,11 @@ Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 0
 0
 ```
 
-##### CastVotes
+</details>
+
+<details>
+    <summary>CastVotes</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CastVotes.ts 0xECd44b59b2B937E8a29b54878018B396A23b4BdE
 Using Infura provider on sepolia network
@@ -488,12 +498,16 @@ Voting
 }
 ```
 
+</details>
+
 #### After Mints / Before Delegates - Block 3029651
 
 * address: 0x6fdd2BD9B6681d634c33749E89643Fb3f9613Faf
 * block: 3030945
 
-##### TokenizedBallotDeployment
+<details>
+    <summary>TokenizedBallotDeployment</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/TokenizedBallotDeployment.ts 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2 3029651 ONE TWO THREE
 Using Infura provider on sepolia network
@@ -507,7 +521,11 @@ Awaiting confirmation
 Contract deployed, address 0x6fdd2BD9B6681d634c33749E89643Fb3f9613Faf, block number 3030945
 ```
 
-##### CheckVotePower
+</details>
+
+<details>
+    <summary>CheckVotePower</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts 0x6fdd2BD9B6681d634c33749E89643Fb3f9613Faf
 Using Infura provider on sepolia network
@@ -521,7 +539,11 @@ Getting voting power to address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D
 Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 0
 ```
 
-##### CastVotes
+</details>
+
+<details>
+    <summary>CastVotes</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CastVotes.ts 0x6fdd2BD9B6681d634c33749E89643Fb3f9613Faf
 Using Infura provider on sepolia network
@@ -590,12 +612,16 @@ Voting
 }
 ```
 
+</details>
+
 #### After Mints / After 1 Delegate - Block 3029652
 
 * address: 0xb6aa3DA7043bc5b583dE37082E10a6952F45a5B8
 * block: 3030955
 
-##### TokenizedBallotDeployment
+<details>
+    <summary>TokenizedBallotDeployment</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/TokenizedBallotDeployment.ts 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2 3029652 ONE TWO THREE
 Using Infura provider on sepolia network
@@ -609,7 +635,11 @@ Awaiting confirmation
 Contract deployed, address 0xb6aa3DA7043bc5b583dE37082E10a6952F45a5B8, block number 3030955
 ```
 
-##### CheckVotePower
+</details>
+
+<details>
+    <summary>CheckVotePower</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts 0xb6aa3DA7043bc5b583dE37082E10a6952F45a5B8
 Using Infura provider on sepolia network
@@ -623,7 +653,11 @@ Getting voting power to address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D
 Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 300
 ```
 
-##### CastVotes
+</details>
+
+<details>
+    <summary>CastVotes</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CastVotes.ts 0xb6aa3DA7043bc5b583dE37082E10a6952F45a5B8
 Using Infura provider on sepolia network
@@ -695,7 +729,11 @@ Voting
 }
 ```
 
-##### CheckVotePower
+</details>
+
+<details>
+    <summary>CheckVotePower</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts 0xb6aa3DA7043bc5b583dE37082E10a6952F45a5B8
 Using Infura provider on sepolia network
@@ -709,12 +747,16 @@ Getting voting power to address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D
 Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 277
 ```
 
+</details>
+
 #### After Delegates - Block 3029653
 
 * address: 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
 * block: 3030985
 
-##### TokenizedBallotDeployment
+<details>
+    <summary>TokenizedBallotDeployment</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/TokenizedBallotDeployment.ts 0xdccA0572Ac7BF14576Cf5d5e8E7Cf31450157Fa2 3029653 ONE TWO THREE
 Using Infura provider on sepolia network
@@ -728,7 +770,11 @@ Awaiting confirmation
 Contract deployed, address 0xc33e80202325d8264f427b248DD2704d48d0Fc3F, block number 3030985
 ```
 
-##### CheckVotePower
+</details>
+
+<details>
+    <summary>CheckVotePower</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
 Using Infura provider on sepolia network
@@ -742,7 +788,11 @@ Getting voting power to address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D
 Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 300
 ```
 
-##### CastVotes
+</details>
+
+<details>
+    <summary>CastVotes</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CastVotes.ts 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
 Using Infura provider on sepolia network
@@ -757,7 +807,11 @@ Voting
 Address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa voted 6 for proposal 0, tx 0xd9dd53c7a188478cbdaecf1de20f7eda32c314d94c80ef1512dc183fc7ca9728, block number 3031001
 ```
 
-##### CheckVotePower
+</details>
+
+<details>
+    <summary>CheckVotePower</summary>
+
 ```bash
 ➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/CheckVotePower.ts 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
 Using Infura provider on sepolia network
@@ -770,6 +824,8 @@ Account 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa vote power is 94
 Getting voting power to address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D
 Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 289
 ```
+
+</details>
 
 # ------------------------------------------------
 
