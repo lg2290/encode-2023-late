@@ -383,6 +383,33 @@ Error: Missing input data
 
 </details>
 
+### QueryResults
+
+```bash
+yarn run ts-node --files scripts/tokenized-ballot/QueryResults.ts [tokenizedBallotContractAddress]
+```
+
+<details>
+    <summary>Error - Missing Args</summary>
+
+```bash
+➜  weekend-3 git:(main) yarn run ts-node --files scripts/tokenized-ballot/QueryResults.ts
+Error: Missing input data
+    at validateInputDataSize (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/scripts/helper/InputDataHelper.ts:11:15)
+    at extractInputData (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/scripts/helper/InputDataHelper.ts:4:5)
+    at main (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/scripts/tokenized-ballot/QueryResults.ts:15:49)
+    at Object.<anonymous> (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/scripts/tokenized-ballot/QueryResults.ts:7:1)
+    at Module._compile (node:internal/modules/cjs/loader:1254:14)
+    at Module.m._compile (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/ts-node/src/index.ts:1618:23)
+    at Module._extensions..js (node:internal/modules/cjs/loader:1308:10)
+    at Object.require.extensions.<computed> [as .ts] (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/ts-node/src/index.ts:1621:12)
+    at Module.load (node:internal/modules/cjs/loader:1117:32)
+    at Function.Module._load (node:internal/modules/cjs/loader:958:12)
+```
+
+</details>
+
+
 ## Executions
 
 ### Before Mints - Block 3029422
@@ -500,6 +527,42 @@ Voting
 
 </details>
 
+<details>
+    <summary>QueryResults</summary>
+
+```bash
+➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/QueryResults.ts 0xECd44b59b2B937E8a29b54878018B396A23b4BdE
+Using Infura provider on sepolia network
+Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 503185690413879161
+Attaching ballot to address 0xECd44b59b2B937E8a29b54878018B396A23b4BdE
+Error: call revert exception; VM Exception while processing transaction: reverted with reason string "Zero votes for all proposals" [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (method="winningProposal()", data="0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001c5a65726f20766f74657320666f7220616c6c2070726f706f73616c7300000000", errorArgs=["Zero votes for all proposals"], errorName="Error", errorSignature="Error(string)", reason="Zero votes for all proposals", code=CALL_EXCEPTION, version=abi/5.7.0)
+    at Logger.makeError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
+    at Logger.throwError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
+    at Interface.decodeFunctionResult (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/abi/src.ts/interface.ts:427:23)
+    at Contract.<anonymous> (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/contracts/src.ts/index.ts:400:44)
+    at step (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/contracts/lib/index.js:48:23)
+    at Object.next (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/contracts/lib/index.js:29:53)
+    at fulfilled (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/contracts/lib/index.js:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  reason: 'Zero votes for all proposals',
+  code: 'CALL_EXCEPTION',
+  method: 'winningProposal()',
+  data: '0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001c5a65726f20766f74657320666f7220616c6c2070726f706f73616c7300000000',
+  errorArgs: [ 'Zero votes for all proposals' ],
+  errorName: 'Error',
+  errorSignature: 'Error(string)',
+  address: '0xECd44b59b2B937E8a29b54878018B396A23b4BdE',
+  args: [],
+  transaction: {
+    data: '0x609ff1bd',
+    to: '0xECd44b59b2B937E8a29b54878018B396A23b4BdE',
+    from: '0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa'
+  }
+}
+```
+
+</details>
+
 ### After Mints / Before Delegates - Block 3029651
 
 * address: 0x6fdd2BD9B6681d634c33749E89643Fb3f9613Faf
@@ -608,6 +671,42 @@ Voting
     nonce: Promise { 4 },
     gasLimit: Promise { <rejected> [Circular *1] },
     chainId: Promise { 11155111 }
+  }
+}
+```
+
+</details>
+
+<details>
+    <summary>QueryResults</summary>
+
+```bash
+➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/QueryResults.ts 0x6fdd2BD9B6681d634c33749E89643Fb3f9613Faf
+Using Infura provider on sepolia network
+Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 503185690413879161
+Attaching ballot to address 0x6fdd2BD9B6681d634c33749E89643Fb3f9613Faf
+Error: call revert exception; VM Exception while processing transaction: reverted with reason string "Zero votes for all proposals" [ See: https://links.ethers.org/v5-errors-CALL_EXCEPTION ] (method="winningProposal()", data="0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001c5a65726f20766f74657320666f7220616c6c2070726f706f73616c7300000000", errorArgs=["Zero votes for all proposals"], errorName="Error", errorSignature="Error(string)", reason="Zero votes for all proposals", code=CALL_EXCEPTION, version=abi/5.7.0)
+    at Logger.makeError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:269:28)
+    at Logger.throwError (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/logger/src.ts/index.ts:281:20)
+    at Interface.decodeFunctionResult (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/abi/src.ts/interface.ts:427:23)
+    at Contract.<anonymous> (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/contracts/src.ts/index.ts:400:44)
+    at step (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/contracts/lib/index.js:48:23)
+    at Object.next (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/contracts/lib/index.js:29:53)
+    at fulfilled (/Users/luiscarvalho/personal/encode-bc/projects/encode-2023-late/weekend-3/node_modules/@ethersproject/contracts/lib/index.js:20:58)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  reason: 'Zero votes for all proposals',
+  code: 'CALL_EXCEPTION',
+  method: 'winningProposal()',
+  data: '0x08c379a00000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000001c5a65726f20766f74657320666f7220616c6c2070726f706f73616c7300000000',
+  errorArgs: [ 'Zero votes for all proposals' ],
+  errorName: 'Error',
+  errorSignature: 'Error(string)',
+  address: '0x6fdd2BD9B6681d634c33749E89643Fb3f9613Faf',
+  args: [],
+  transaction: {
+    data: '0x609ff1bd',
+    to: '0x6fdd2BD9B6681d634c33749E89643Fb3f9613Faf',
+    from: '0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa'
   }
 }
 ```
@@ -749,6 +848,19 @@ Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 277
 
 </details>
 
+<details>
+    <summary>QueryResults</summary>
+
+```bash
+➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/QueryResults.ts 0xb6aa3DA7043bc5b583dE37082E10a6952F45a5B8
+Using Infura provider on sepolia network
+Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 503185690413879161
+Attaching ballot to address 0xb6aa3DA7043bc5b583dE37082E10a6952F45a5B8
+Proposal TWO, index 1, winning with 23 votes
+```
+
+</details>
+
 ### After Delegates - Block 3029653
 
 * address: 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
@@ -823,6 +935,19 @@ Getting voting power to address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa
 Account 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa vote power is 94
 Getting voting power to address 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D
 Account 0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D vote power is 289
+```
+
+</details>
+
+<details>
+    <summary>QueryResults</summary>
+
+```bash
+➜  weekend-3 git:(main) ✗ yarn run ts-node --files scripts/tokenized-ballot/QueryResults.ts 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+Using Infura provider on sepolia network
+Signer address 0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa, balance 503185690413879161
+Attaching ballot to address 0xc33e80202325d8264f427b248DD2704d48d0Fc3F
+Proposal ONE, index 0, winning with 17 votes
 ```
 
 </details>
