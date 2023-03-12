@@ -32,6 +32,6 @@ async function main() {
 async function mint(myTokenContract: MyToken, address: string, mintAmount: number) {
     console.log(`Minting tokens`);
     const mintTx = await myTokenContract.mint(address, mintAmount);
-    const mintTxReceipt = mintTx.wait();
+    const mintTxReceipt = await mintTx.wait();
     console.log(`Minted ${mintAmount} tokens to address ${address} in tx ${(await mintTxReceipt).transactionHash}, block ${(await mintTxReceipt).blockNumber}`);
 }

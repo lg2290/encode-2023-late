@@ -2,6 +2,8 @@
 
 * Deployer: [0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa](https://sepolia.etherscan.io/address/0xC29eB9a48c8a69273D99D52b4279084ae8ad8DFa)
 * Account1: [0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D](https://sepolia.etherscan.io/address/0xfc289231534c6F14EfD0f2496550Aa6cBFCf612D)
+* Network: Sepolia
+    * Faucet: http://sepolia-faucet.pk910.de/
 
 # MyToken
 
