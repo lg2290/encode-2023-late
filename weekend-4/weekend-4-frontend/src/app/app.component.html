@@ -1,4 +1,57 @@
-<h1>asd</h1>
-<div class="container  text-center mt-5 mb-5">
-  <h1>Bootstrap 5 is working fine with Angular 15!!</h1>
-</div>
+<main>
+  <div class="container py-4">
+    <div class="px-4 py-5 text-center">
+      <h1 class="display-5 fw-bold">{{title}}</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">{{subtitle}}</p>
+        <p class="lead mb-4">{{network ? "Connected to ETH network " + network : "Connecting..."}}</p>
+      </div>
+    </div>
+
+    <div *ngIf="!signer">    
+      <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold">Connect Wallet</h1>
+          <p class="fs-4">Connect your wallet to mint, delegate and vote!</p>
+          <p><input class="form-control" type="text" id="privateKey" name="privateKey" placeholder="Private Key" #privateKey></p>
+          <div class="d-grid gap-2 d-sm-flex">
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3" (click)="connectWallet(privateKey.value)">Connect Wallet</button>
+          </div>  
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="signer">
+      <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold">Connected to {{signer.address.substring(0, 20)}}...</h1>
+          <p class="fs-4">ETH balance: {{signerEthBalance ? signerEthBalance : "loading"}}</p>
+          <p class="fs-4">MTK balance: {{signerMyTokenBalance ? signerMyTokenBalance : "loading"}}</p>
+          <div class="d-grid gap-2 d-sm-flex">
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3" (click)="disconnectWallet()">Disconnect</button>
+          </div>  
+        </div>
+      </div>
+
+      <div class="row align-items-md-stretch">
+        <div class="col-md-6">
+          <div class="h-100 p-5 text-bg-dark rounded-3">
+            <h2>Change the background</h2>
+            <p>dd</p>
+            <button class="btn btn-outline-light" type="button">Example button</button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="h-100 p-5 bg-light border rounded-3">
+            <h2>Add borders</h2>
+            <p>Or, </p>
+            <button class="btn btn-outline-secondary" type="button">Example button</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+
