@@ -36,9 +36,16 @@
       <div class="row align-items-md-stretch">
         <div class="col-md-6">
           <div class="h-100 p-5 text-bg-dark rounded-3">
-            <h2>Change the background</h2>
-            <p>dd</p>
-            <button class="btn btn-outline-light" type="button">Example button</button>
+            <h2>Mint MTK Tokens</h2>
+            <p><input class="form-control" type="number" id="mtkAmount" name="mtkAmount" placeholder="Amount" #mtkAmount></p>
+            <button class="btn btn-outline-light" type="button" [disabled]="mintingMtk" (click)="mintMtk(mtkAmount.value)">Mint</button>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="h-100 p-5 text-bg-dark rounded-3">
+            <h2>Delegate MTK Tokens</h2>
+            <p><input class="form-control" type="text" id="delegateAddress" name="delegateAddress" placeholder="Address to delegate to" #delegateAddress></p>
+            <button class="btn btn-outline-light" type="button" [disabled]="delegatingMtk" (click)="delegateMtk(delegateAddress.value)">Delegate</button>
           </div>
         </div>
         <div class="col-md-6">
@@ -49,7 +56,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </main>
