@@ -13,3 +13,7 @@ export class MintResponse{
 export class DelegateResult {
     constructor(transactionHash: string, public blockNumber: number) {}
 }
+
+export class BallotAddressResponse {
+    constructor(public address: string){}
+}

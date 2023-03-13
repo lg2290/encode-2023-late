@@ -35,27 +35,62 @@
 
       <div class="row align-items-md-stretch">
         <div class="col-md-6">
-          <div class="h-100 p-5 text-bg-dark rounded-3">
+          <div class="h-100 p-5 text-bg-dark rounded-3 border border-5 border-warning">
             <h2>Mint MTK Tokens</h2>
             <p><input class="form-control" type="number" id="mtkAmount" name="mtkAmount" placeholder="Amount" #mtkAmount></p>
             <button class="btn btn-outline-light" type="button" [disabled]="mintingMtk" (click)="mintMtk(mtkAmount.value)">Mint</button>
           </div>
         </div>
         <div class="col-md-6">
-          <div class="h-100 p-5 text-bg-dark rounded-3">
+          <div class="h-100 p-5 text-bg-dark rounded-3 border border-5 border-warning">
             <h2>Delegate MTK Tokens</h2>
             <p><input class="form-control" type="text" id="delegateAddress" name="delegateAddress" placeholder="Address to delegate to" #delegateAddress></p>
             <button class="btn btn-outline-light" type="button" [disabled]="delegatingMtk" (click)="delegateMtk(delegateAddress.value)">Delegate</button>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="h-100 p-5 bg-light border rounded-3">
-            <h2>Add borders</h2>
-            <p>Or, </p>
-            <button class="btn btn-outline-secondary" type="button">Example button</button>
+      </div>
+
+      <div *ngIf="!ballotContract">
+        <div class="p-5 mt-4 mb-4 text-bg-dark rounded-3 border border-5 border-danger">
+          <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Connect to Ballot</h1>
+            <p class="fs-4">To vote and see results, connect to ballot for a given block number</p>
+            <p><input class="form-control" type="number" id="blockNumber" name="blockNumber" placeholder="Snapshot Block Number" #blockNumber></p>
+            <div class="d-grid gap-2 d-sm-flex">
+              <button type="button" class="btn btn-primary btn-lg px-4 gap-3" (click)="getBallot(blockNumber.value)">Connect to Ballot</button>
+            </div>  
+          </div>
+        </div>  
+      </div>
+      <div *ngIf="ballotContract">
+        <div class="p-5 mt-4 mb-4 text-bg-dark rounded-3 border border-5 border-danger">
+          <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Connected to Ballot for Snapshot Block {{ballotSnapshotBlock}}</h1>
+            <div class="d-grid gap-2 d-sm-flex">
+              <button type="button" class="btn btn-primary btn-lg px-4 gap-3" (click)="disconnectBallot()">Disconnect</button>
+            </div>  
           </div>
         </div>
+  
+        <div class="row align-items-md-stretch">
+          <div class="col-md-6">
+            <div class="h-100 p-5 text-bg-dark rounded-3">
+              <h2>Cast Votes</h2>
+              <p class="col-md-6"><input class="form-control" type="number" id="proposalIndex" name="proposalIndex" placeholder="Proposal Index" #proposalIndex></p>
+              <p class="col-md-6"><input class="form-control" type="number" id="amountOfVotes" name="amountOfVotes" placeholder="Amount of Votes" #amountOfVotes></p>
+              <button class="btn btn-outline-light" type="button" [disabled]="voting" (click)="vote(proposalIndex.value, amountOfVotes.value)">Vote</button>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="h-100 p-5 text-bg-dark rounded-3">
+              <h2>Result</h2>
+              <h3>Winning Proposal: {{winningProposalIndex}} - {{winningProposalName}}</h3>
+              <button class="btn btn-outline-light" type="button" [disabled]="gettingResult" (click)="getResult()">Get/Refresh Result</button>
+            </div>
+          </div>
+        </div>  
       </div>
+
     </div>
   </div>
 </main>

@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { BigNumber, ethers, utils } from 'ethers';
+import { ethers, utils } from 'ethers';
 import myTokenJson from "../assets/MyToken.json";
+import ballotJson from "../assets/TokenizedBallot.json";
 import { HttpClient } from '@angular/common/http';
-import { DelegateResult, MyTokenAddressResponse, MintRequest, MintResponse } from './app.model';
+import { BallotAddressResponse, DelegateResult, MyTokenAddressResponse, MintRequest, MintResponse } from './app.model';
 
 @Component({
   selector: 'app-root',
@@ -15,15 +16,22 @@ export class AppComponent {
   provider: ethers.providers.BaseProvider | undefined;
   network: string | undefined;
   block: number | undefined;
+  
   signer: ethers.Wallet | undefined;
   signerEthBalance: number | undefined;
   signerMyTokenBalance: number | undefined;
+
   myTokenContract: ethers.Contract | undefined;
   mints: Array<MintResponse> = new Array();
   delegates: Array<DelegateResult> = new Array();
 
-  constructor(private http: HttpClient) { }
+  ballotSnapshotBlock: number | undefined;
+  ballotContract: ethers.Contract | undefined;
 
+  winningProposalIndex: number | undefined;
+  winningProposalName: string | undefined;
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
     this.provider = ethers.providers.getDefaultProvider('sepolia');
@@ -85,6 +93,53 @@ export class AppComponent {
       .then((receipt: ethers.ContractReceipt) => {
         this.delegates.push(new DelegateResult(receipt.transactionHash, receipt.blockNumber));
         this.delegatingMtk = false;
+      });
+  }
+
+  ballotAddressUrl = "http://localhost:3000/ballot/address?snapshot-block=";
+
+  public gettingBallot = false;
+
+  getBallot(blockNumber: string) {
+    this.ballotSnapshotBlock = parseInt(blockNumber);
+
+    this.gettingBallot = true;
+    this.http.get<BallotAddressResponse>(this.ballotAddressUrl+this.ballotSnapshotBlock)
+      .subscribe(addressResponse => {
+        this.ballotContract = new ethers.Contract(addressResponse.address, ballotJson.abi, this.signer);
+        this.gettingBallot = false;
+      });
+  }
+
+  disconnectBallot() {
+    this.ballotContract = undefined;
+  }
+
+  public voting = false;
+
+  vote(proposalIndex: string, votesAmount: string) {
+    const proposal = parseInt(proposalIndex);
+    const votes = parseInt(votesAmount);
+
+    this.voting = true;
+    this.ballotContract!['vote'](proposal, votes)
+      .then((transaction: ethers.ContractTransaction) => transaction.wait())
+      .then((receipt: ethers.ContractReceipt) => {
+        this.voting = false;
+      });
+  }
+
+  public gettingResult = false;
+
+  getResult() {
+    this.gettingResult = true;
+    this.ballotContract!['winningProposal']()
+      .then((winningProposal: ethers.BigNumber) => {
+        this.winningProposalIndex = winningProposal.toNumber();
+        return this.ballotContract!['proposals'](this.winningProposalIndex);
+      }).then((proposal: [string, ethers.BigNumber]) => {
+        this.winningProposalName = ethers.utils.parseBytes32String(proposal[0])
+        this.gettingResult = false;
       });
   }
 
