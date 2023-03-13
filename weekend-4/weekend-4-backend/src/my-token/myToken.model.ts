@@ -5,3 +5,7 @@ export class MintRequest{
 export class MintResponse{
     constructor(public transactionHash: string, public blockNumber: number){}
 }
+
+export class MyTokenAddressResponse {
+    constructor(public address: string){}
+}
