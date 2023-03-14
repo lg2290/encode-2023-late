@@ -69,29 +69,41 @@ export class AppComponent {
   }
 
   public mintingMtk = false;
+  public mintingMtkResult: string | undefined;
 
   myTokenMintUrl = "http://localhost:3000/my-token/mint";
 
   mintMtk(amount: string) {
     this.mintingMtk = true;
+    this.mintingMtkResult = undefined;
     const requestBody = new MintRequest(this.signer!.address, parseFloat(amount));
     this.http.post<MintResponse>(this.myTokenMintUrl, requestBody).subscribe(
       response => {
         this.getMtkBalance();
         this.mints.push(response);
+        this.mintingMtkResult = `Successfully minted ${amount} MTK in tx ${response.transactionHash} / block ${response.blockNumber}`;
         this.mintingMtk = false;
-      }
-    )
+      },
+      error => {
+        this.mintingMtkResult = "Failed to mint";
+        this.mintingMtk = false;
+      });
   }
 
   public delegatingMtk = false;
+  public delegatingResult: string | undefined;
 
   delegateMtk(addressToDelegate: string) {
     this.delegatingMtk = true;
+    this.delegatingResult = undefined;
     this.myTokenContract!['delegate'](addressToDelegate)
       .then((delegateTransaction: ethers.ContractTransaction) => delegateTransaction.wait())
       .then((receipt: ethers.ContractReceipt) => {
         this.delegates.push(new DelegateResult(receipt.transactionHash, receipt.blockNumber));
+        this.delegatingResult = `Delegated votes to ${addressToDelegate} in tx ${receipt.transactionHash} / block ${receipt.blockNumber}`;
+        this.delegatingMtk = false;
+      }).catch((error:any) => {
+        this.delegatingResult = "Failed to delegate";
         this.delegatingMtk = false;
       });
   }
@@ -99,14 +111,19 @@ export class AppComponent {
   ballotAddressUrl = "http://localhost:3000/ballot/address?snapshot-block=";
 
   public gettingBallot = false;
+  public gettingBallotResult: string | undefined;
 
   getBallot(blockNumber: string) {
+    this.gettingBallotResult = undefined;
     this.ballotSnapshotBlock = parseInt(blockNumber);
 
     this.gettingBallot = true;
     this.http.get<BallotAddressResponse>(this.ballotAddressUrl+this.ballotSnapshotBlock)
       .subscribe(addressResponse => {
         this.ballotContract = new ethers.Contract(addressResponse.address, ballotJson.abi, this.signer);
+        this.gettingBallot = false;
+      }, error => {
+        this.gettingBallotResult = "Failed to get Ballot Address";
         this.gettingBallot = false;
       });
   }
@@ -116,29 +133,45 @@ export class AppComponent {
   }
 
   public voting = false;
+  public votingResult: string | undefined;
 
   vote(proposalIndex: string, votesAmount: string) {
     const proposal = parseInt(proposalIndex);
     const votes = parseInt(votesAmount);
+    this.votingResult = undefined;
 
     this.voting = true;
     this.ballotContract!['vote'](proposal, votes)
       .then((transaction: ethers.ContractTransaction) => transaction.wait())
       .then((receipt: ethers.ContractReceipt) => {
         this.voting = false;
+        this.votingResult = `Successfully voted ${votesAmount} to proposal ${proposalIndex}, in tx ${receipt.transactionHash} / block ${receipt.blockNumber}`;
+      }).catch((error: any) => {
+        this.votingResult = "Failed to complete voting";
+        this.voting = false;
       });
   }
 
   public gettingResult = false;
+  public result: string | undefined;
 
   getResult() {
+    this.result = undefined;
     this.gettingResult = true;
+
     this.ballotContract!['winningProposal']()
       .then((winningProposal: ethers.BigNumber) => {
         this.winningProposalIndex = winningProposal.toNumber();
+        this.result = `Winning Proposal: ${this.winningProposalIndex}`;
+
         return this.ballotContract!['proposals'](this.winningProposalIndex);
       }).then((proposal: [string, ethers.BigNumber]) => {
         this.winningProposalName = ethers.utils.parseBytes32String(proposal[0])
+        this.result = `Winning Proposal: ${this.winningProposalIndex} - ${this.winningProposalName}`;
+
+        this.gettingResult = false;
+      }).catch((error: any) => {
+        this.result = "Failed to get result";
         this.gettingResult = false;
       });
   }

@@ -39,6 +39,7 @@
             <h2>Mint MTK Tokens</h2>
             <p><input class="form-control" type="number" id="mtkAmount" name="mtkAmount" placeholder="Amount" #mtkAmount></p>
             <button class="btn btn-outline-light" type="button" [disabled]="mintingMtk" (click)="mintMtk(mtkAmount.value)">Mint</button>
+            <p class="fs-4" *ngIf="mintingMtkResult">{{mintingMtkResult}}</p>
           </div>
         </div>
         <div class="col-md-6">
@@ -46,6 +47,7 @@
             <h2>Delegate MTK Tokens</h2>
             <p><input class="form-control" type="text" id="delegateAddress" name="delegateAddress" placeholder="Address to delegate to" #delegateAddress></p>
             <button class="btn btn-outline-light" type="button" [disabled]="delegatingMtk" (click)="delegateMtk(delegateAddress.value)">Delegate</button>
+            <p class="fs-4" *ngIf="delegatingResult">{{delegatingResult}}</p>
           </div>
         </div>
       </div>
@@ -58,7 +60,8 @@
             <p><input class="form-control" type="number" id="blockNumber" name="blockNumber" placeholder="Snapshot Block Number" #blockNumber></p>
             <div class="d-grid gap-2 d-sm-flex">
               <button type="button" class="btn btn-primary btn-lg px-4 gap-3" (click)="getBallot(blockNumber.value)">Connect to Ballot</button>
-            </div>  
+            </div>
+            <p class="fs-4" *ngIf="gettingBallotResult">{{gettingBallotResult}}</p>
           </div>
         </div>  
       </div>
@@ -79,12 +82,13 @@
               <p class="col-md-6"><input class="form-control" type="number" id="proposalIndex" name="proposalIndex" placeholder="Proposal Index" #proposalIndex></p>
               <p class="col-md-6"><input class="form-control" type="number" id="amountOfVotes" name="amountOfVotes" placeholder="Amount of Votes" #amountOfVotes></p>
               <button class="btn btn-outline-light" type="button" [disabled]="voting" (click)="vote(proposalIndex.value, amountOfVotes.value)">Vote</button>
+              <p class="fs-4" *ngIf="votingResult">{{votingResult}}</p>
             </div>
           </div>
           <div class="col-md-6">
             <div class="h-100 p-5 text-bg-dark rounded-3">
               <h2>Result</h2>
-              <h3>Winning Proposal: {{winningProposalIndex}} - {{winningProposalName}}</h3>
+              <h4 *ngIf="result">{{result}}</h4>
               <button class="btn btn-outline-light" type="button" [disabled]="gettingResult" (click)="getResult()">Get/Refresh Result</button>
             </div>
           </div>
