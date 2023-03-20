@@ -1,27 +1,35 @@
 # Weekend5
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.2.
+Encode Bootcamp Weekend 5 challenge, Team 1 Late.
 
-## Development server
+Lottery dApp, developed using Angular and EthersJS:
+ * First, it is possible to connect using Private Key or Mnemonic Phrase
+ * After connected, user has the option to Create a new Lottery, or connect to an existing one via Contract Address
+ * Depending on the Lottery Status, and the user Balance, the user see different options:
+    * Lottery not initiated:
+        * If user is the owner, option to open bets
+        * Otherwise, no options
+    * Bets open:
+        * Buy Tokens, if user balance is 0
+        * Approve Lottery Contract to spend tokens, if not done yet
+        * Bet, after approval
+    * Bets finished
+        * Option to close the Lottery, for all users
+    * Lottery closed
+        * Check prize value and claim it, if value > 0
+        * For owner, check pool value and withdraw it, if value > 0
+* At any time, if the user Token balance is > 0, it's possible to burn them in exchange for ETH
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## IMPROVEMENTS/ TODOs
+* Add user feedback mechanism (like loading animations) while users execute operations
+* Add user feedback for operastions results - success / failure
 
-## Code scaffolding
+## Execute:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+npm install
 
-## Build
+ng serve
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+[Access application in localhost:4200](http://localhost:4200)
