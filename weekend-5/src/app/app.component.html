@@ -1,0 +1,204 @@
+<main>
+  <div class="container py-4">
+    <div class="px-4 py-5 text-center">
+      <h1 class="display-5 fw-bold">{{title}}</h1>
+      <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">{{subtitle}}</p>
+        <p class="lead mb-4">{{network ? "Connected to ETH network " + network : "Connecting..."}}</p>
+      </div>
+    </div>
+
+    <div *ngIf="!signer">    
+      <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold">Connect Wallet</h1>
+          <p class="fs-4">Connect your wallet to create or join a Lottery</p>
+          <p><input class="form-control" type="text" id="privateKey" name="privateKey" placeholder="Private Key or Mnemonic" #privateKey></p>
+          <div class="d-grid gap-2 d-sm-flex">
+            <button type="button" class="btn btn-primary btn-lg px-4 gap-3" (click)="connectWallet(privateKey.value)">Connect Wallet</button>
+          </div>  
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="signer">
+      <div class="p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid">
+          <h1 class="display-5 fw-bold">Hello {{signer.address.substring(0, 5)}}***{{signer.address.substring(signer.address.length - 5)}}</h1>
+          <p class="fs-4">ETH balance: {{signerEthBalance ? signerEthBalance : "loading"}}</p>
+          <div class="d-grid gap-2 d-sm-flex">
+            <button type="button" class="btn btn-danger btn-lg px-4 gap-3" (click)="disconnectWallet()">Disconnect</button>
+          </div>  
+        </div>
+      </div>
+
+      <div *ngIf="!currentLottery" class="p-5 mb-4 text-bg-dark rounded-3">
+        <div *ngIf="!createLotterySelected && !connectToLotterySelected" class="container-fluid gap-2 d-sm-flex mb-3">
+          <button type="button" class="btn btn-success btn-lg px-4 gap-3 col-md-6" (click)="selectCreateLottery(true)">Create New Lottery</button>
+          <button type="button" class="btn btn-primary btn-lg px-4 gap-3 col-md-6" (click)="selectConnectToLottery(true)">Connect to Lottery</button>
+        </div>
+        <div *ngIf="createLotterySelected" class="container-fluid">
+          <p class="fs-4">Create Lottery</p>
+          <div class="container">
+            <div class="row mb-3">
+              <div class="col-3">
+                <input class="form-control" type="text" id="tokenName" name="tokenName" placeholder="Token Name" #tokenName>
+              </div>
+              <div class="col-3">
+                <input class="form-control" type="text" id="tokenSymbol" name="tokenSymbol" placeholder="Token Symbol" #tokenSymbol>
+              </div>
+              <div class="col-2">
+                <input class="form-control" type="text" id="ethTokenRation" name="ethTokenRation" placeholder="ETH/Token Ratio" #ethTokenRation>
+              </div>
+              <div class="col-2">
+                <input class="form-control" type="text" id="betPrice" name="betPrice" placeholder="Bet Price" #betPrice>
+              </div>
+              <div class="col-2">
+                <input class="form-control" type="text" id="betFee" name="betFee" placeholder="Bet Fee" #betFee>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <button type="button" class="btn btn-danger btn-lg px-4 gap-3 col-12" [disabled]="creatingContract" (click)="selectCreateLottery(false)">Cancel</button>
+              </div>
+              <div class="col-6">
+                <button type="button" class="btn btn-success btn-lg px-4 gap-3 col-12" [disabled]="creatingContract" (click)="createLottery(tokenName.value, tokenSymbol.value, ethTokenRation.value, betPrice.value, betFee.value)">Create</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="connectToLotterySelected" class="container-fluid">
+          <p class="fs-4">Connect to Lottery</p>
+          <div class="container">
+            <div class="row mb-3">
+              <div class="col-12">
+                <input class="form-control" type="text" id="lotteryContractAddress" name="lotteryContractAddress" placeholder="Lottery Contract Address" #lotteryContractAddress>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <button type="button" class="btn btn-danger btn-lg px-4 gap-3 col-12" [disabled]="connectingToContract" (click)="selectConnectToLottery(false)">Cancel</button>
+              </div>
+              <div class="col-6">
+                <button type="button" class="btn btn-success btn-lg px-4 gap-3 col-12" [disabled]="connectingToContract" (click)="connectToLottery(lotteryContractAddress.value)">Connect</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="currentLottery">
+        <div class="p-5 mb-4 text-bg-dark rounded-3">
+          <h1 class="display-5 fw-bold">Connected to Lottery {{currentLottery.address.substring(0, 5)}}***{{currentLottery.address.substring(signer.address.length - 5)}}</h1>
+          <div class="container">
+            <div class="row mb-2">
+              <div class="col-8">
+                <p class="fs-5 mb-1">{{currentLottery.address}}</p>
+              </div>
+              <div class="col-4">
+                <button type="button" class="btn btn-danger btn-lg px-4 gap-3 float-end" (click)="disconnectFromLottery()">Disconnect</button>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-4 fs-4">
+                Bet Price: {{betPrice}}
+              </div>
+              <div class="col-4 fs-4">
+                Bet Fee: {{betFee}}
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4 fs-4">
+                Your Balance: {{signerTokenBalanceString? signerTokenBalanceString : "0.0"}}
+              </div>
+              <div class="col-4">
+                <button type="button" class="btn btn-info btn-lg px-4 gap-3" [disabled]="processingStatusChange" (click)="burnTokens()">Burn Tokens!</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row align-items-md-stretch">
+          <div class="col-md-12 mb-2">
+            <div class="h-100 p-5 text-bg-dark rounded-3 border border-5">
+              <h2 class="mb-5">Lottery Status: {{lotteryStatus}} </h2>
+              <div *ngIf="isLotteryOwner && !betsOpen && !betsDurationDefined">
+                <div class="fs-4 mb-1">Owner, do you want to open Bets?</div>
+                <div class="container">
+                  <div class="row">
+                    <div class="col-8">
+                      <input class="form-control" type="number" id="duration" name="duration" placeholder="Lottery Duration in Seconds" #duration>
+                    </div>
+                    <div class="col-4">
+                      <button class="btn btn-outline-light" type="button" [disabled]="processingStatusChange" (click)="openBets(duration.value)">Open Bets</button>                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="betsOpen && !betsPeriodFinished">
+                <div *ngIf="!signerHasTokens">
+                  <div class="fs-4 mb-1">You need tokens to join Lottery, let's buy?</div>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-8">
+                        <input class="form-control" type="number" id="buyAmount" name="buyAmount" placeholder="Amount of Tokens" #buyAmount>
+                      </div>
+                      <div class="col-4">
+                        <button class="btn btn-outline-light" type="button" [disabled]="processingStatusChange" (click)="buyTokens(buyAmount.value)">Buy!</button>                      
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="signerHasTokens">
+                  <div *ngIf="!lotteryAllowedToSpendTokens">
+                    <div class="fs-4 mb-1">Lottery needs your allowance to spend your tokens.</div>
+                    <button class="btn btn-outline-light" type="button" [disabled]="processingStatusChange" (click)="allowanceToSpend()">Allow Lottery to Spend Tokens</button>
+                  </div>
+                  <div *ngIf="lotteryAllowedToSpendTokens">
+                    <div class="fs-4 mb-1">Awesome! Let's bet!</div>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-8">
+                          <input class="form-control" type="number" id="betAmount" name="betAmount" placeholder="Amount of Bets" #betAmount>
+                        </div>
+                        <div class="col-4">
+                          <button class="btn btn-outline-light" type="button" [disabled]="processingStatusChange" (click)="bet(betAmount.value)">Bet!</button>                      
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="betsOpen && betsPeriodFinished">
+                <div class="fs-4 mb-1">Close Lottery to see the results.</div>
+                <button class="btn btn-outline-light" type="button" [disabled]="processingStatusChange" (click)="closeLottery()">Close Lottery</button>
+              </div>
+              <div *ngIf="!betsOpen && betsPeriodFinished">
+                <div class="container mb-2">
+                  <div class="row">
+                    <div class="col-8 fs-4">
+                      Lottery closed, you have {{signerPrizeString}} to claim!
+                    </div>
+                    <div class="col-4" *ngIf="signerHasPrize">
+                      <button class="btn btn-outline-light" type="button" [disabled]="processingStatusChange" (click)="claimPrize()">Claim Prize!</button>                      
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="isLotteryOwner" class="container">
+                  <div class="row">
+                    <div class="col-8 fs-4">
+                      Owner, you have {{ownerPoolValueString}} on your poll!
+                    </div>
+                    <div class="col-4" *ngIf="ownerPoolHasValue">
+                      <button class="btn btn-outline-light" type="button" [disabled]="processingStatusChange" (click)="withdrawOwnerPool()">Withdraw!</button>                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
