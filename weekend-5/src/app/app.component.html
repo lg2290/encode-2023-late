@@ -201,4 +201,12 @@
       </div>
     </div>
   </div>
+
+  <div id="backdrop" class="fixed-top" *ngIf="creatingContract || connectingToContract || processingStatusChange">
+    <div class="text-center loading">
+        <div class="spinner-border" role="status">
+            <span class="sr-only"></span>
+        </div>
+    </div>
+  </div>
 </main>
