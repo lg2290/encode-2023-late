@@ -1,6 +1,9 @@
 import Header from "../components/Header"
 import {  BanknotesIcon } from '@heroicons/react/20/solid'
 import Footer from "../components/Footer"
+import Notification from '../components/Notification/Notification'
+import CreateChallenge from "../components/CreateChallenge"
+import {useState} from 'react'
 const challenges = [
     {
       name: 'Bitcoin',
@@ -19,10 +22,23 @@ const challenges = [
   
 
 export default function  Challenges(){
+    // NOTIFICATIONS functions
+    const [notificationTitle, setNotificationTitle] = useState();
+    const [notificationDescription, setNotificationDescription] = useState();
+    const [dialogType, setDialogType] = useState(1);
+    const [show, setShow] = useState(false);
+    const close = async () => {
+      setShow(false);
+    };
   const acceptChallenge = (id:number) =>{
-    alert("Call Contract to Challenge")
+   setNotificationTitle("Accept Challenge")
+   setNotificationDescription("Challenge Successfully accepted.")
+   setDialogType(1)  //1 Green Success 2 Red Error
+   setShow(true)
 
   }
+
+  
     return (    <div className="bg-gray-900 pt-16">
     <Header />
     <div className="text-center">
@@ -70,5 +86,12 @@ export default function  Challenges(){
       ))}
     </ul>
     <Footer />
+    <Notification
+        type={dialogType}
+        show={show}
+        close={close}
+        title={notificationTitle}
+        description={notificationDescription}
+      />
     </div>)
 }

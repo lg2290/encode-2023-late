@@ -1,6 +1,10 @@
 import Header from "../components/Header"
 import {  TrashIcon } from '@heroicons/react/20/solid'
 import Footer from "../components/Footer"
+import Notification from '../components/Notification/Notification'
+import {useState} from 'react'
+import CreateChallenge from "../components/CreateChallenge"
+
 const challenges = [
     {
       name: 'Bitcoin',
@@ -33,9 +37,25 @@ const challenges = [
   
 
 export default function  Challenges(){
-  const acceptChallenge = (id:number) =>{
-    alert("Call Contract to Challenge")
+  const [openCreateChallenge, setOpenCreateChallenge] = useState(false)
 
+
+   // NOTIFICATIONS functions
+   const [notificationTitle, setNotificationTitle] = useState();
+   const [notificationDescription, setNotificationDescription] = useState();
+   const [dialogType, setDialogType] = useState(1);
+   const [show, setShow] = useState(false);
+   const close = async () => {
+     setShow(false);
+   };
+   const createChallenge = (token:string,date:Date,greaterThanOrLessThan:string,price:number) => {
+    setNotificationTitle("Create Challenge")
+    setNotificationDescription("Challenge Successfully created.")
+    setDialogType(1)  //1 Green Success 2 Red Error
+    setShow(true)
+  }
+  const closeCreateChallenge = () => {
+    setOpenCreateChallenge(false)
   }
     return (    <div className="bg-gray-900 pt-16">
     <Header />
@@ -44,6 +64,11 @@ export default function  Challenges(){
     <h1 className="pt-4 text-3xl font-bold tracking-tight text-white sm:text-3xl">
               My Challenges
             </h1></div>
+            <button     
+                              onClick={()=>setOpenCreateChallenge(true)}
+           
+                              className="ml-6 inline-flex justify-center rounded-md bg-indigo-600  py-3 px-7 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:col-start-2"
+                              >Create Challenge</button>        
     <ul role="list" className="pt-14 pb-10 pl-4 pr-4 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {challenges.map((challenge,index) => (
         <li
@@ -84,5 +109,14 @@ export default function  Challenges(){
       ))}
     </ul>
     <Footer />
+    <CreateChallenge open={openCreateChallenge} setOpen={closeCreateChallenge} createChallenge={createChallenge} />
+
+    <Notification
+        type={dialogType}
+        show={show}
+        close={close}
+        title={notificationTitle}
+        description={notificationDescription}
+      />
     </div>)
 }
