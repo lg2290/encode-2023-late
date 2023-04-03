@@ -5,7 +5,7 @@ import type { AppProps } from 'next/app'
 import NextHead from 'next/head'
 import * as React from 'react'
 import { WagmiConfig, createClient, configureChains } from 'wagmi'
-import {  goerli,} from 'wagmi/chains';
+import {  goerli,polygonMumbai} from 'wagmi/chains';
 
 import { publicProvider } from 'wagmi/providers/public'
 import '@rainbow-me/rainbowkit/styles.css';
@@ -19,7 +19,7 @@ import {
 // Configure chains & providers
 // Two popular providers are Alchemy (alchemy.com) and Infura (infura.io)
 const { chains, provider } = configureChains(
-  [goerli],
+  [goerli,polygonMumbai],
   [publicProvider()],
 )
 
