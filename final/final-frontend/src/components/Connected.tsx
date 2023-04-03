@@ -5,7 +5,6 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import Row from 'react-bootstrap/Row';
 
 export function Connected() {
 

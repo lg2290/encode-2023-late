@@ -1,30 +1,58 @@
+import '../styles/global.css'
 import { EthereumClient } from '@web3modal/ethereum'
 import { Web3Modal } from '@web3modal/react'
 import type { AppProps } from 'next/app'
 import NextHead from 'next/head'
 import * as React from 'react'
-import { WagmiConfig } from 'wagmi'
+import { WagmiConfig, createClient, configureChains } from 'wagmi'
+import {  goerli,} from 'wagmi/chains';
 
-import { chains, client, walletConnectProjectId } from '../wagmi'
+import { publicProvider } from 'wagmi/providers/public'
+import '@rainbow-me/rainbowkit/styles.css';
+import { RainbowKitSiweNextAuthProvider ,GetSiweMessageOptions} from '@rainbow-me/rainbowkit-siwe-next-auth';
+import { SessionProvider } from 'next-auth/react';
+import {
+  getDefaultWallets,
+  RainbowKitProvider,darkTheme 
+} from '@rainbow-me/rainbowkit';
 
-const ethereumClient = new EthereumClient(client, chains)
+// Configure chains & providers
+// Two popular providers are Alchemy (alchemy.com) and Infura (infura.io)
+const { chains, provider } = configureChains(
+  [goerli],
+  [publicProvider()],
+)
 
+const { connectors } = getDefaultWallets({
+  appName: 'Crypto Price Chanllenge',
+  chains
+});
+
+const getSiweMessageOptions: GetSiweMessageOptions = () => ({
+  statement: 'Sign in to Crypto Price Challenge',
+});
+
+// Set up client
+const client = createClient({
+  autoConnect: true,
+  connectors: connectors,
+  provider,
+  
+})
 function App({ Component, pageProps }: AppProps) {
   const [mounted, setMounted] = React.useState(false)
   React.useEffect(() => setMounted(true), [])
   return (
     <WagmiConfig client={client}>
-      <NextHead>
-        <title>wagmi</title>
-      </NextHead>
+    <SessionProvider refetchInterval={0} session={pageProps.session}>
 
-      {mounted && <Component {...pageProps} />}
+<RainbowKitSiweNextAuthProvider
+getSiweMessageOptions={getSiweMessageOptions}
+>
+      <RainbowKitProvider chains={chains} theme={darkTheme()}>
 
-      <Web3Modal
-        projectId={walletConnectProjectId}
-        ethereumClient={ethereumClient}
-      />
-    </WagmiConfig>
+<Component {...pageProps} /></RainbowKitProvider></RainbowKitSiweNextAuthProvider>
+</SessionProvider></WagmiConfig>
   )
 }
 
