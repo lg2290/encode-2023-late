@@ -53,7 +53,7 @@ export default function  Challenges(){
           ,challenge:challenge
           ,date:format(results[index].endTime.toNumber(), 'E do LLL Y hh:mm a')
           ,amount:amount
-          ,status:status,id:results[0].challengeId.toNumber()}   )
+          ,status:status,id:results[index].challengeId.toNumber()}   )
    
       }
        setChallenges(_challenges) 
