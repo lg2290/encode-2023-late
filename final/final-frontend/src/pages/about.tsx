@@ -2,51 +2,67 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 const people = [
     {
-      name: 'Leslie Alexander',
-      role: 'Co-Founder / CEO',
+      name: 'Karthikeyan',
+      role: 'Team Member',
       imageUrl:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
-      bio: 'Ultricies massa malesuada viverra cras lobortis. Tempor orci hac ligula dapibus mauris sit ut eu. Eget turpis urna maecenas cras. Nisl dictum.',
+        'https://cdn.discordapp.com/attachments/1075414098944204900/1092993785845252096/33004854.jpg',
+        bio: 'Certified blockchain developers have undergone rigorous training and certification programs to acquire the necessary skills and knowledge to design, develop and deploy blockchain-based applications.',
       twitterUrl: '#',
       linkedinUrl: '#',
     },
     {
-        name: 'Leslie Alexander',
-        role: 'Co-Founder / CEO',
+        name: 'Pedro Franceschin',
+        role: 'Team Member',
         imageUrl:
-          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
-        bio: 'Ultricies massa malesuada viverra cras lobortis. Tempor orci hac ligula dapibus mauris sit ut eu. Eget turpis urna maecenas cras. Nisl dictum.',
-        twitterUrl: '#',
+          'https://avatars.githubusercontent.com/u/103785545?v=4',
+          bio: 'Certified blockchain developers have undergone rigorous training and certification programs to acquire the necessary skills and knowledge to design, develop and deploy blockchain-based applications.',
+          twitterUrl: '#',
         linkedinUrl: '#',
       },
       {
-        name: 'Leslie Alexander',
-        role: 'Co-Founder / CEO',
+        name: 'Luis Gustavo',
+        role: 'Team Member',
         imageUrl:
-          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
-        bio: 'Ultricies massa malesuada viverra cras lobortis. Tempor orci hac ligula dapibus mauris sit ut eu. Eget turpis urna maecenas cras. Nisl dictum.',
-        twitterUrl: '#',
+          'https://avatars.githubusercontent.com/u/6730493?s=400&u=2b77678fe35cf420b7563bdf42955fb9a9f748b9&v=4',
+          bio: 'Certified blockchain developers have undergone rigorous training and certification programs to acquire the necessary skills and knowledge to design, develop and deploy blockchain-based applications.',
+          twitterUrl: '#',
         linkedinUrl: '#',
       },
       {
-        name: 'Leslie Alexander',
-        role: 'Co-Founder / CEO',
+        name: 'Shivam Kalra',
+        role: 'Team Member',
         imageUrl:
-          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
-        bio: 'Ultricies massa malesuada viverra cras lobortis. Tempor orci hac ligula dapibus mauris sit ut eu. Eget turpis urna maecenas cras. Nisl dictum.',
-        twitterUrl: '#',
+          'https://cdn.discordapp.com/avatars/833314689077346364/4008492138f491bcc6fea0fe36b631d6.webp?size=80',
+          bio: 'Certified blockchain developers have undergone rigorous training and certification programs to acquire the necessary skills and knowledge to design, develop and deploy blockchain-based applications.',
+          twitterUrl: '#',
         linkedinUrl: '#',
       },
       {
-        name: 'Leslie Alexander',
-        role: 'Co-Founder / CEO',
+        name: 'Dominic',
+        role: 'Team Member',
         imageUrl:
-          'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80',
-        bio: 'Ultricies massa malesuada viverra cras lobortis. Tempor orci hac ligula dapibus mauris sit ut eu. Eget turpis urna maecenas cras. Nisl dictum.',
-        twitterUrl: '#',
+          'https://avatars.githubusercontent.com/u/1897212?s=400&u=7739cc1bba4476fa638e1b0a8c1b2c6c853c6656&v=4',
+          bio: 'Certified blockchain developers have undergone rigorous training and certification programs to acquire the necessary skills and knowledge to design, develop and deploy blockchain-based applications.',
+          twitterUrl: '#',
         linkedinUrl: '#',
       },
-    // More people...
+      {
+        name: 'Matt',
+        role: 'Team Member',
+        imageUrl:
+          'https://cdn.discordapp.com/avatars/889347707259473931/f0ce5ffc47191adc956f539e0e8d4124.webp?size=80',
+          bio: 'Certified blockchain developers have undergone rigorous training and certification programs to acquire the necessary skills and knowledge to design, develop and deploy blockchain-based applications.',
+          twitterUrl: '#',
+        linkedinUrl: '#',
+      },      {
+        name: 'Tara',
+        role: 'Team Member',
+        imageUrl:
+          'https://cdn.discordapp.com/avatars/959727334905249802/a31afd0b9abf319fcd31e31535a72729.webp?size=80',
+          bio: 'Certified blockchain developers have undergone rigorous training and certification programs to acquire the necessary skills and knowledge to design, develop and deploy blockchain-based applications.',
+          twitterUrl: '#',
+        linkedinUrl: '#',
+      },    // More people...
   ]
 
 export default function  Challenges(){

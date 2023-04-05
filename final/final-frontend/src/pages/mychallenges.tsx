@@ -51,7 +51,7 @@ export default function  Challenges(){
         _challenges.push({numeratorCurrency:results[index].numeratorCurrency
           ,denominatorCurrency:results[index].denominatorCurrency
           ,challenge:challenge
-          ,date:format(results[index].endTime.toNumber(), 'E do LLL Y hh:mm a')
+          ,date:format(results[index].endTime.toNumber() * 1000, 'E do LLL Y hh:mm a')
           ,amount:amount
           ,status:status,id:results[index].challengeId.toNumber()}   )
    
@@ -79,7 +79,6 @@ export default function  Challenges(){
     );
     
     try {
-
       const usdcContract  = new ethers.Contract(usdcContractAddress,usdcContractABI,signer)
      
       let tx = await usdcContract.callStatic.approve( contractAddress,ethers.utils.parseUnits(amount.toString(),6),{
@@ -90,11 +89,11 @@ export default function  Challenges(){
        
           await  tx1.wait()
       let tx3= await contract.callStatic.addChallenge(token,currency,ethers.utils.parseEther(price.toString()),
-      date.getTime(),parseInt(cSide),ethers.utils.parseUnits(amount.toString(),6),{
+      date.getTime()/1000,parseInt(cSide),ethers.utils.parseUnits(amount.toString(),6),{
         gasLimit: 3000000})
 
       let transaction = await contract.addChallenge(token,currency,ethers.utils.parseEther(price.toString()),
-      date.getTime(),parseInt(cSide),ethers.utils.parseUnits(amount.toString(),6),{
+      date.getTime()/1000,parseInt(cSide),ethers.utils.parseUnits(amount.toString(),6),{
         gasLimit: 3000000})
         const receipt = await transaction.wait(); // wait for the transaction to be mined
         

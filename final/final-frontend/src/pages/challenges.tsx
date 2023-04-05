@@ -108,7 +108,7 @@ export default function  Challenges(){
         _challenges.push({numeratorCurrency:results[index].numeratorCurrency
           ,denominatorCurrency:results[index].denominatorCurrency
           ,challenge:challenge
-          ,date:format(results[index].endTime.toNumber(), 'E do LLL Y hh:mm a')
+          ,date:format(results[index].endTime.toNumber() * 1000, 'E do LLL Y hh:mm a')
           ,amount:amount
           ,status:status,id:results[index].challengeId.toNumber()}   )
    
