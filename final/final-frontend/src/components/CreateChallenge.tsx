@@ -14,10 +14,14 @@ export default function CreateChallenge(props:any) {
      //We need to validate that the price and date were entered 
       
      const token = document.getElementById("token").value
-      const date = document.getElementById("date").value 
-      const greaterThanOrLessThan =  document.getElementById("greaterThanOrLessThan").value 
+
+     const currency = document.getElementById("currency").value
+     const amount = document.getElementById("amount").value
+     const _date = document.getElementById("date").value 
+     const date =new Date(_date)
+     const greaterThanOrLessThan =  document.getElementById("greaterThanOrLessThan").value 
       const price = document.getElementById("price").value 
-      props.createChallenge(token,date,greaterThanOrLessThan,price)
+      props.createChallenge(token,currency,date,greaterThanOrLessThan,price,amount)
      props.setOpen(false)
   }
 
@@ -62,7 +66,10 @@ export default function CreateChallenge(props:any) {
                         </p>
                     </div>
                   </div>
-                  <div className="mt-4 ">
+                  <div className="mt-4  ">
+                  <div className="mt-4  flex flex-row  ">
+                    
+                  <div className="mt-4  w-1/2 ">
                     
                   <label
                           for="passengers"
@@ -76,16 +83,50 @@ export default function CreateChallenge(props:any) {
                           required
                           className="w-full rounded-md border border-stroke bg-[#353444] py-3 px-6 text-white text-base font-medium  outline-none transition-all focus:bg-[#454457] focus:shadow-input"
                         >
-                            <option value="0xC04B0d3107736C32e19F1c62b2aF67BE61d63a05">BTC - Wrapped BTC</option>
-                            <option value="0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6">ETH - Wrapped ETH</option>
+                            <option value="BTC">BTC</option>
+                            <option value="ETH">ETH</option>
+                            <option value="BNB">BNB</option>
+                            <option value="ADA">Cardano</option>
+                            <option value="XRP">XRP</option>
+                            <option value="DOGE">Dogecoin</option>
+                            <option value="MATIC">Polygon Matic</option>
+                            <option value="SOL">Solana</option>
+                            <option value="DOT">Polkadot</option>
                             
 
 
 
                             </select>
 
-                      
-                     
+                          </div>       
+                          <div className="mt-4  w-1/2 ">
+                    
+                    <label
+                            for="currency"
+                            className="mb-2 block text-base font-medium"
+                          >
+                            Currency
+                          </label>
+                          <select
+                            name="currency"
+                            id="currency"
+                            required
+                            className="w-full rounded-md border border-stroke bg-[#353444] py-3 px-6 text-white text-base font-medium  outline-none transition-all focus:bg-[#454457] focus:shadow-input"
+                          >
+                              <option value="USD">USD</option>
+                              <option value="EUR">EUR</option>
+
+                              <option value="ETH">ETH</option>
+                              <option value="BTC">BTC</option>
+
+                              
+  
+  
+  
+                              </select>
+  
+                            </div>                           
+        </div>             
                             <div className="mt-4 w-full">
                          
                        
@@ -118,14 +159,16 @@ export default function CreateChallenge(props:any) {
                           required
                           className="w-full rounded-md border border-stroke bg-[#353444] py-3 px-6 text-white text-base font-medium  outline-none transition-all focus:bg-[#454457] focus:shadow-input"
                         >
-                            <option value="1">Greater Than or Equal To</option>
-                            <option value="2">Less Than or Equal To</option>
+                            <option value="0">Greater Than or Equal To</option>
+                            <option value="1">Less Than or Equal To</option>
                             
 
 
 
                             </select>
-
+                            <div className="mt-4  flex flex-row  ">
+                    
+                    <div className="w-1/2 ">
                             <label
                           for="price"
                           className="mt-2 mb-2 block text-base font-medium text-black"
@@ -141,6 +184,28 @@ export default function CreateChallenge(props:any) {
                           
                           className="text-white w-full rounded-md border border-stroke bg-[#353444] py-3 px-6 text-base font-medium text-body-color outline-none transition-all focus:bg-[#454457] focus:shadow-input"
                         />
+
+                        </div>
+
+                        <div className="w-1/2 ">
+                            <label
+                          for="amount"
+                          className="mt-2 mb-2 block text-base font-medium text-black"
+                        >
+                          Amount
+                        </label>
+                        <input
+                         
+                          type="number"
+                          name="amount"
+                          id="amount"
+                          required
+                          
+                          className="text-white w-full rounded-md border border-stroke bg-[#353444] py-3 px-6 text-base font-medium text-body-color outline-none transition-all focus:bg-[#454457] focus:shadow-input"
+                        />
+
+                        </div>
+                        </div>
 
                         </div>
                         

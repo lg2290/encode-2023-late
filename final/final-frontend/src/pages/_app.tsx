@@ -19,7 +19,7 @@ import {
 // Configure chains & providers
 // Two popular providers are Alchemy (alchemy.com) and Infura (infura.io)
 const { chains, provider } = configureChains(
-  [goerli,polygonMumbai],
+  [polygonMumbai],
   [publicProvider()],
 )
 
