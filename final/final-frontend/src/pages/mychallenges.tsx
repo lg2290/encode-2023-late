@@ -1,5 +1,5 @@
 import Header from "../components/Header"
-import {  TrashIcon } from '@heroicons/react/20/solid'
+import {  BanknotesIcon } from '@heroicons/react/20/solid'
 import Footer from "../components/Footer"
 import Notification from '../components/Notification/Notification'
 import {useState,useEffect} from 'react'
@@ -53,7 +53,7 @@ export default function  Challenges(){
           ,challenge:challenge
           ,date:format(results[index].endTime.toNumber(), 'E do LLL Y hh:mm a')
           ,amount:amount
-          ,status:status}   )
+          ,status:status,id:results[0].challengeId.toNumber()}   )
    
       }
        setChallenges(_challenges) 
@@ -134,11 +134,53 @@ export default function  Challenges(){
     setOpenCreateChallenge(false)
   }
 
-  const deleteChallenge = (id:number) =>{
-    setNotificationTitle("Delete Challenge")
-    setNotificationDescription("Cannot Delete Challenge.")
-    setDialogType(2)  //1 Green Success 2 Red Error
-    setShow(true)
+  const claimWinnings = async (id:number) =>{
+    const contract = new ethers.Contract(
+      contractAddress,
+      contractAbi,
+      signer
+    );
+    
+    try {
+
+      let tx3= await contract.callStatic.withdrawWinnings(id,{
+        gasLimit: 3000000})
+
+      let transaction = await contract.withdrawWinnings(id,{
+        gasLimit: 3000000})
+        const receipt = await transaction.wait(); // wait for the transaction to be mined
+        
+          setDialogType(1) //Success
+     
+      setNotificationTitle("Claim Winnings")
+      setNotificationDescription("Winnings Successfully Claimed.")
+      setDialogType(1)  //1 Green Success 2 Red Error
+      setShow(true)
+      setRefreshData(new Date())
+    }catch(error)
+    {
+      if (error.code === 'TRANSACTION_REVERTED') {
+        console.log('Transaction reverted');
+        let revertReason = ethers.utils.parseRevertReason(error.data);
+        setNotificationDescription(revertReason);
+      }  else if (error.code === 'ACTION_REJECTED') {
+      setNotificationDescription('Transaction rejected by user');
+    }else {
+     console.log(error)
+     //const errorMessage = ethers.utils.revert(error.reason);
+      setNotificationDescription(`Transaction failed with error: ${error.reason}`);
+    
+  }
+      setDialogType(2) //Error
+      setNotificationTitle("Error Claiming Winnings.")
+  
+      setShow(true)
+  
+
+    
+
+  }
+
  
    }
     return (    <div className="bg-gray-900 pt-16 ">
@@ -181,11 +223,11 @@ export default function  Challenges(){
             <div className="-mt-px flex divide-x divide-gray-200">
               <div className="flex w-0 flex-1">
                 <button
-                 onClick={()=>deleteChallenge(index)}
+                 onClick={()=>claimWinnings(challenge.id)}
                   className="relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
                 >
-                  <TrashIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
-                  Delete
+                  <BanknotesIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
+                  Claim Winnings
                 </button>
               </div>
               
